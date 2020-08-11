@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from flask_cors import CORS
 import numpy as np
 import pandas as pd
@@ -9,6 +9,9 @@ from sklearn.metrics.pairwise import linear_kernel
 
 # address to be added as per the location in git branch.
 df = pd.read_csv('datasets/main_dataset.csv')
+
+# must be hide before deployment, using config.py
+api_key = 'e6d2456b4b0007f138f5408f828d9e80'
 
 app = Flask(__name__)
 CORS(app)
@@ -110,18 +113,20 @@ def cast_crew(id):
                             'known_for':lis })
             
     return dic
+
 ####### RECOMMENDOR SYSTEM ######
 
 md_mod1=pd.read_csv("datasets/processed_data1.csv")
-# lis=np.load('Datasets/fit_data.npy',allow_pickle=True)
+
+# reading the fit_transform data
 lis=[]
 for i in range(7):
     s=''
-    s='datasets/fit_data_'+str(i)+'.npy'
+    s='datasets/ls'+str(i)+'.npy'
     lis.append(np.load(s,allow_pickle=True))
 lis=np.concatenate((lis[0],lis[1],lis[2],lis[3],lis[4],lis[5],lis[6]))
 
-#Default Recommendations with preferance order
+# Default Recommendations with preferance order
 
 def final_recom(title,val,md_mod8,ls):    
     
@@ -277,31 +282,47 @@ def suggestions():
 def recom():
 # can be changed as per the format of data recieved from frontend.
     title = request.get_json()['title']
-    id = df[df['original_title']==title].index
+    idx = df[df['original_title']==title].index[0]
     to_be_sent = {}
-    to_be_sent['title']=df['original_title'].values[df[df['imdb_id']==id].index][0]
-    to_be_sent['genres']=df['genres'].values[df[df['imdb_id']==id].index][0].split('|')
-    to_be_sent['runtime']=df['runtime'].values[df[df['imdb_id']==id].index][0]
-    to_be_sent['rating']=df['imdb_rating'].values[df[df['imdb_id']==id].index][0]
-    to_be_sent['vote_count']=df['imdb_votes'].values[df[df['imdb_id']==id].index][0]
-    to_be_sent['overview']=df['story'].values[df[df['imdb_id']==id].index][0]
-    to_be_sent['cast']=cast_crew(id)
-    to_be_sent['release_date']=df['release_date'].values[df[df['imdb_id']==id].index][0]
+    to_be_sent['title']=df['original_title'][idx]
+    to_be_sent['genres']=df['genres'][idx].split('|')
+    to_be_sent['runtime']=df['runtime'][idx]
+    to_be_sent['rating']=df['imdb_rating'][idx]
+    to_be_sent['vote_count']=df['imdb_votes'][idx]
+    to_be_sent['overview']=df['story'][idx]
+    p_p = df['poster_path'][idx]
+    to_be_sent['poster_path']= p_p if p_p.count('/')>3 else 'http://image.tmdb.org/t/p/original/' + p_p
+    to_be_sent['cast']=cast_crew(df['imdb_id'][idx])
+    to_be_sent['release_date']=df['release_date'][idx]
     rec=recommend(title)
-    #to_be_sent['recom_mov']
+    dic=[]
+    for i in rec.index:
+    	p_p = rec['poster_path'][i]
+    	dic.append({'title':rec['original_title'][i],
+    									'poster_path':p_p if p_p.count('/')>3 else 'http://image.tmdb.org/t/p/original/' + p_p,
+    									'rating':rec['vote_average'][i]})
+    to_be_sent['recom_mov'] = dic
+    return jsonify(to_be_sent)
 
 # when the user applies some filter filter
 @app.route('/filter', methods = ['POST'])
 def filter():
     title = request.get_json()['title']
-    l=request.get_json()['cast']
-    m=request.get_json()['director']
-    n=request.get_json()['genre']
-    k=request.get_json()['language']
-    p=request.get_json()['popularity']
-    id = df[df['original_title']==title].index
-    rec=recommend(title,l,m,n,k,p)
-    #print(rec)
+    l = request.get_json()['cast']
+    m = request.get_json()['director']
+    n = request.get_json()['genre']
+    k = request.get_json()['language']
+    p = request.get_json()['popularity']
+    fil_mov = {}
+    rec = recommend(title,l,m,n,k,p)
+    dic=[]
+    for i in rec.index:
+    	p_p = rec['poster_path'][i]
+    	dic.append({'title':rec['original_title'][i],
+    									'poster_path':p_p if p_p.count('/')>3 else 'http://image.tmdb.org/t/p/original/' + p_p,
+    									'rating':rec['vote_average'][i]})
+    fil_mov['fil_mov'] = dic
+    return jsonify(fil_mov)
 
 if __name__ == '__main__':
 	# app.run()
