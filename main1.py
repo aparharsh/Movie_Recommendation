@@ -202,7 +202,7 @@ def lang_recom(title,val,md_mod1,ls,p,tot_movies,quant):
     md['cos']=list(sim_scores)
     md['cos']=md['cos'].apply(lambda x: x[1].astype(float))
     md=md.loc[md.language==lang[0],:]
-    md=md.iloc[1:,:]
+    md=md.iloc[1:41,:]
     
     if(p==1):
         
