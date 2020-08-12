@@ -6,8 +6,18 @@ import requests
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import linear_kernel
+import nltk
+import pickle
+from nltk.corpus import stopwords
+from nltk.stem import PorterStemmer
+from bs4 import BeautifulSoup
+nltk.download('stopwords')
 
-# address to be added as per the location in git branch.
+stop = stopwords.words('english')
+
+model = pickle.load(open('datasets/model.sav', 'rb'))
+sent = {0:'negative', 1:'somewhat negative', 2:'neutral', 3:'somewhat positive', 4:'positive'}
+
 df = pd.read_csv('datasets/main_dataset.csv')
 
 # must be hide before deployment, using config.py
@@ -251,6 +261,34 @@ def recommend(title,l=0,m=0,n=0,k=0,p=0):
     res=md_recom.loc[:,['original_title','poster_path','vote_average']]
     return res
     
+## scraping comments and sentiment analysis
+def cmnt(id):
+    
+    tokenizer = nltk.RegexpTokenizer(r"\w+")
+    
+    page=requests.get('https://www.imdb.com/title/' + id + '/reviews?ref_=tt_urv')
+    soup = BeautifulSoup(page.content, 'html.parser')
+    cmnts=[]
+    dic=[]
+    ls=[]
+    for idx, i in enumerate(soup.find_all('div', attrs={'class':"text show-more__control"})):
+        if idx > 4:break
+            
+        s = i.get_text()
+        cmnts.append(s)
+        s = tokenizer.tokenize(s)
+        s = [PorterStemmer().stem(i) for i in s]
+        s = [item for item in s if item not in stop]
+        s = ' '.join(s)
+        
+        ls.append(s)
+        
+    result = model.predict(ls)
+    respo=[sent[x] for x in result]
+    
+    for i in range(5):
+        dic.append({'comment':cmnts[i],'emoji':respo[i]})
+    return dic
 
 ########################################################################33
 
@@ -259,50 +297,57 @@ def recommend(title,l=0,m=0,n=0,k=0,p=0):
 # top 10 movies to be sent for the start page.
 @app.route('/home', methods = ['GET'])
 def home_data():
-	home_dt={}
-	for i in df.sort_values(by='imdb_rating', ascending=False).head(10).index:
-	    home_dt[df['original_title'][i]] = df['poster_path'][i]
-	return jsonify(home_dt)
-
-# suggestions while the user types the title.
-# @app.route('/suggestions', methods = ['GET'])
-# def suggestions():
-# 	return jsonify(df['original_title'].values[]) 
-
-# either use the above function or the below one.
+    home_dt={}
+    df1=df[df['language']=='hi']
+    for i in df1.sort_values(by='imdb_votes', ascending=False).head(3).index:
+        p_p = df1['poster_path'][i]
+        home_dt[df1['original_title'][i]] = p_p if p_p.count('/')>3 else 'http://image.tmdb.org/t/p/original/' + p_p
+    df1=df[df['language']=='en']
+    for i in df1.sort_values(by='imdb_votes', ascending=False).head(7).index:
+        p_p = df1['poster_path'][i]
+        home_dt[df1['original_title'][i]] = p_p if p_p.count('/')>3 else 'http://image.tmdb.org/t/p/original/' + p_p
+    return jsonify(home_dt)
 
 # suggestions while the user types the title.
 @app.route('/suggestions', methods = ['POST'])
 def suggestions():
 	s = request.get_json()['title'].lower()
-	return jsonify(df[df['search_title'].str.contains(s)].sort_values(by='imdb_rating', ascending = False).head()['original_title'].values)
+	return jsonify(df[df['search_title'].str.contains(s)].sort_values(by='imdb_votes', ascending = False).head()['original_title'].values.tolist())
 
-# when the user searches a moviw title.
+# when the user searches a movie title.
 @app.route('/recom', methods = ['POST'])
 def recom():
-# can be changed as per the format of data recieved from frontend.
+
     title = request.get_json()['title']
-    idx = df[df['original_title']==title].index[0]
-    to_be_sent = {}
-    to_be_sent['title']=df['original_title'][idx]
-    to_be_sent['genres']=df['genres'][idx].split('|')
-    to_be_sent['runtime']=df['runtime'][idx]
-    to_be_sent['rating']=df['imdb_rating'][idx]
-    to_be_sent['vote_count']=df['imdb_votes'][idx]
-    to_be_sent['overview']=df['story'][idx]
-    p_p = df['poster_path'][idx]
-    to_be_sent['poster_path']= p_p if p_p.count('/')>3 else 'http://image.tmdb.org/t/p/original/' + p_p
-    to_be_sent['cast']=cast_crew(df['imdb_id'][idx])
-    to_be_sent['release_date']=df['release_date'][idx]
-    rec=recommend(title)
-    dic=[]
-    for i in rec.index:
-    	p_p = rec['poster_path'][i]
-    	dic.append({'title':rec['original_title'][i],
-    									'poster_path':p_p if p_p.count('/')>3 else 'http://image.tmdb.org/t/p/original/' + p_p,
-    									'rating':rec['vote_average'][i]})
-    to_be_sent['recom_mov'] = dic
-    return jsonify(to_be_sent)
+    
+    if title in df['original_title'].values :
+       
+        idx = df[df['original_title']==title].index[0]
+        to_be_sent = {}
+        to_be_sent['title']=df['original_title'][idx]
+        to_be_sent['genres']=df['genres'][idx].split('|')
+        to_be_sent['runtime']=df['runtime'][idx]
+        to_be_sent['rating']=df['imdb_rating'][idx]
+        to_be_sent['vote_count']=df['imdb_votes'][idx]
+        to_be_sent['overview']=df['story'][idx]
+        p_p = df['poster_path'][idx]
+        to_be_sent['poster_path']= p_p if p_p.count('/')>3 else 'http://image.tmdb.org/t/p/original/' + p_p
+        to_be_sent['cast']=cast_crew(df['imdb_id'][idx])
+        to_be_sent['release_date']=df['release_date'][idx]
+        rec=recommend(title)
+        dic=[]
+        for i in rec.index:
+        	p_p = rec['poster_path'][i]
+        	dic.append({'title':rec['original_title'][i],
+        									'poster_path':p_p if p_p.count('/')>3 else 'http://image.tmdb.org/t/p/original/' + p_p,
+        									'rating':rec['vote_average'][i]})
+        to_be_sent['recom_mov'] = dic
+        to_be_sent['comments'] = cmnt(df['imdb_id'][idx])
+        
+        return jsonify(to_be_sent)
+
+    else:
+        return jsonify('Sorry. The searched Title was not in our Database. Use drop-down suggestions for better surfing!')
 
 # when the user applies some filter filter
 @app.route('/filter', methods = ['POST'])
@@ -325,13 +370,4 @@ def filter():
     return jsonify(fil_mov)
 
 if __name__ == '__main__':
-	# app.run()
-    title='Avengers: Endgame'
-    l=0
-    m=0
-    n=0
-    k=0
-    p=0
-    rec=recommend(title,l,m,n,k,p)
-    print(rec)
     app.run(debug = True)
