@@ -1,0 +1,9 @@
+.Range {
+ background-color: rgb(0, 0, 0);
+ max-width: 1600px;
+ min-width: 500px;
+ /* height: 10000px; */
+ width: 100%;
+ margin: 0 auto;
+ /* align-content: center; */
+}

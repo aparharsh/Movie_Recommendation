@@ -1,0 +1,41 @@
+.Body {
+    background-color: rgb(255, 255, 255);
+    max-width: 1600px;
+    min-width: 100px;
+    margin: 0 auto;
+}
+.CMargin{
+    background-color: yellow;
+    margin-top: 0;
+}
+
+/* .Nav {
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    color: rgb(38, 110, 173);
+    padding: 6px;
+    opacity: 1;
+    z-index: 3;
+}
+.Text{
+    opacity: 1;
+
+    font-size: 2em;
+}
+
+.BackGImg{
+    margin-top: -4px;
+    background-image: url('../assets/IronMan.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+}
+.test{
+    /* background-image: url('../assets/IronMan.png'); */
+    /* background-color: rgb(189, 94, 197); */
+    /* background-repeat: no-repeat;
+    background-size: cover;
+    height: 400px;
+  
+} */ 

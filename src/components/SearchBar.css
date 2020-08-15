@@ -1,0 +1,40 @@
+.SearchBar{
+    text-align: center;
+    margin-top: 1px;
+    top: 0;
+    opacity: 0.8;
+}
+
+
+
+
+
+
+.Round {
+    margin-top: 20px;
+    width: 50%;
+    height: 30px;
+    border-radius: 20px 0px 0px 20px;
+    border: 1px rgb(255, 255, 255) solid;
+    padding: 5px 5px 5px 25px;
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 5;
+}
+
+.SearchButton{
+    height: 42px;
+    background-color: white;
+    border: none;
+    /* border-left: 1px rgba(97, 97, 97, 0.4) solid; */
+    border-radius: 0 20px 20px 0;  
+}
+.SearchIcon{
+    padding-right: 10px;
+    padding-left: 10px;
+}
+.SearchIcon:hover{
+    cursor: pointer;
+}
+

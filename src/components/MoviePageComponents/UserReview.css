@@ -1,0 +1,103 @@
+.URreviewBox{
+    height: 400px;
+    width: 300px;
+    background-color: #ffffffc0;
+    margin-left: 60px;
+    border-radius: 10px;
+}
+
+.URHeader{
+    text-align: center;
+    font-size: 4rem;
+    font-weight: bold;
+    color: white;
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+
+.URboxes{
+    margin-top: 0px;
+    background-color: #000000;
+
+}
+.URTexts{
+    height: 300px;
+    overflow: hidden;
+    padding: 20px;
+    text-align: center;
+    /* background-color: turquoise; */
+}
+.URRatings{
+    border-top: 1px solid rgb(150, 150, 150);
+    text-align: center;
+    padding: 20px;
+}
+
+
+
+
+/* @media only screen and (min-width : 1300px) and 
+(max-width : 1600px) {
+    .reviewBox{
+        background-color: #15c240fa;
+    }
+
+} */
+
+
+@media only screen and (min-width : 1000px) and 
+(max-width : 1300px) {
+    .URreviewBox{
+        /* background-color: #156ec2fa; */
+        height: 300px;
+        width: 200px;
+    }
+    .URTexts{
+        height: 230px;
+        padding: 10px;
+        overflow: hidden;
+    }
+    .URRatings{
+        padding: 10px;
+    }
+
+}
+
+
+@media only screen and (min-width : 800px) and 
+(max-width : 1000px) {
+    .URreviewBox{
+        /* background-color: #c215c2fa; */
+        height: 200px;
+        width: 150px;
+    }
+    .URTexts{
+        height: 140px;
+        padding: 10px;
+        overflow: hidden;
+    }
+    .URRatings{
+        padding:5px ;
+    }
+
+
+}
+
+@media only screen and (min-width : 10px) and 
+(max-width : 800px) {
+    .URreviewBox{
+        /* background-color: #a2c215fa; */
+        height: 110px;
+        width: 110px;
+    }
+    .URTexts{
+        height: 140px;
+        padding: 10px;
+        overflow: hidden;
+        display: none;
+    }
+    .URRatings{
+        padding:20px ;
+        border: none;
+    }
+}

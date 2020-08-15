@@ -1,0 +1,31 @@
+.Icard{
+    height: 158px;
+    width: 316px;
+    display: inline-block;
+    background-color: turquoise;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 75px;
+}
+.Pdiv{
+    text-align: center;
+}
+.Arrow{
+    margin-top: 150px;
+    float: right;
+    color: thistle;
+    position: absolute;
+}
+.MoiveNameInDiv{
+    height: 100px;
+    width: 80px;
+    background-color: teal;
+    border-radius: 30px 30px 30px 30px;
+    padding: 10px;
+    margin: 16px 0px 0px 16px; 
+}
+.Hr{
+    margin-top: 35px;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 5px;
+}

@@ -1,0 +1,70 @@
+.NewC{
+    display: inline-block;
+    height: 158px;
+    width: 300px;
+    background-color: #5badce;
+    background-size: cover;
+    color: #fff;
+    border-radius: 10px;
+    margin-left: 10%;
+    
+}
+.CMoiveNameInDiv{
+    height: 100px;
+    width: 80px;
+    text-align: center;
+    background-color: rgba(5, 24, 24, 0.541);
+    border-radius: 20px 20px 20px 20px;
+    padding: 10px;
+    margin: 16px 0px 0px 16px; 
+}
+.CHr{
+    margin-top: 35px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgb(255, 255, 255);
+    border-radius: 1px;
+} 
+.CDivMargin{
+  
+    /* background-color: violet; */
+    margin-top: -80px;
+}
+
+@media only screen and (max-width: 800px) {
+   .CMoiveNameInDiv{
+       visibility: hidden;
+   }
+   .NewC{
+    width: 100px;
+   }
+   .CDivMargin{
+       display: none;
+       margin-top: 80px;
+   }
+  }
+@media only screen and (max-width: 1100px) and (min-width: 800px) {
+    .CMoiveNameInDiv{
+        visibility: hidden;
+    }
+    .NewC{
+     /* background-color: yellow; */
+     width: 170px;
+    }
+    .CDivMargin{
+        margin-top: 0px;
+    }
+}
+
+@media only screen and (max-width: 1400px) and (min-width: 1100px) {
+    .CMoiveNameInDiv{
+        visibility: hidden;
+    }
+    .NewC{
+     /* background-color: rgb(124, 196, 109); */
+     width: 200px;
+    }
+    .CDivMargin{
+        margin-top: 0px;
+    }
+}
+
