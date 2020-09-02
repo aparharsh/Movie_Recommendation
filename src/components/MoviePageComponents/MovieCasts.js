@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './MovieCasts.css';
 const MovieCasts = (props) => {
+  // console.log('MCProps',props.data.data.moviePage.cast[0].poster)
     return(
         <div>
            <div className="MCblackBGCAast" >
@@ -8,38 +9,39 @@ const MovieCasts = (props) => {
                <div>
                   <div >
                     <div className="MCrecDiv">
-                      <img src="https://i.pravatar.cc/299" className="MCPP"/>
-                      <div className="MCRealname">{props.data.castRealName[0]} </div><div className="MCcharactername">Character</div><div className="MCcharactername">{props.data.castCharacterName[0]} </div>
+                      <img src={props.data.data.moviePage.cast[0].poster} alt="alt" className="MCPP" onClick={(m) => props.clicked(props.data.data.moviePage.cast[0])}/>
+                      {/* src="https://i.pravatar.cc/299" */}
+                      <div className="MCRealname">{props.data.data.moviePage.cast[0].name} </div><div className="MCcharactername">Character</div><div className="MCcharactername">{props.data.data.moviePage.cast[0].job} </div>
                     </div>
 
                     <div className="MCrecDiv">
-                      <img src="https://i.pravatar.cc/300" className="MCPP"/>
-                      <div className="MCRealname">{props.data.castRealName[1]} </div><div className="MCcharactername">Character</div><div className="MCcharactername">{props.data.castCharacterName[1]} </div>
+                      <img src={props.data.data.moviePage.cast[1].poster} alt="alt" className="MCPP" onClick={(m) => props.clicked(props.data.data.moviePage.cast[1])}/>
+                      <div className="MCRealname">{props.data.data.moviePage.cast[1].name} </div><div className="MCcharactername">Character</div><div className="MCcharactername">{props.data.data.moviePage.cast[1].job} </div>
                     </div>
 
                     <div className="MCrecDiv">
-                      <img src="https://i.pravatar.cc/301" className="MCPP"/>
-                      <div className="MCRealname">{props.data.castRealName[2]} </div><div className="MCcharactername">Character</div><div className="MCcharactername">{props.data.castCharacterName[2]} </div>
+                      <img src={props.data.data.moviePage.cast[2].poster} alt="alt" className="MCPP" onClick={(m) => props.clicked(props.data.data.moviePage.cast[2])}/>
+                      <div className="MCRealname">{props.data.data.moviePage.cast[2].name} </div><div className="MCcharactername">Character</div><div className="MCcharactername">{props.data.data.moviePage.cast[2].job} </div>
                     </div>
 
                     <div className="MCrecDiv">
-                    <img src="https://i.pravatar.cc/302" className="MCPP"/>
-                    <div className="MCRealname">{props.data.castRealName[3]} </div><div className="MCcharactername">Character</div><div className="MCcharactername">{props.data.castCharacterName[3]} </div>
+                    <img src={props.data.data.moviePage.cast[3].poster} alt="alt" className="MCPP" onClick={(m) => props.clicked(props.data.data.moviePage.cast[3])}/>
+                    <div className="MCRealname">{props.data.data.moviePage.cast[3].name} </div><div className="MCcharactername">Character</div><div className="MCcharactername">{props.data.data.moviePage.cast[3].job} </div>
                     </div>
 
                     <div className="MCrecDiv">
-                      <img src="https://i.pravatar.cc/303" className="MCPP"/>
-                      <div className="MCRealname">{props.data.castRealName[4]} </div><div className="MCcharactername">Character</div><div className="MCcharactername">{props.data.castCharacterName[4]} </div>
+                      <img src={props.data.data.moviePage.cast[4].poster} alt="alt" className="MCPP" onClick={(m) => props.clicked(props.data.data.moviePage.cast[4])}/>
+                      <div className="MCRealname">{props.data.data.moviePage.cast[4].name} </div><div className="MCcharactername">Character</div><div className="MCcharactername">{props.data.data.moviePage.cast[4].job} </div>
                     </div>
 
                     <div className="MCrecDiv">
-                      <img src="https://i.pravatar.cc/304" className="MCPP"/>
-                      <div className="MCRealname">{props.data.castRealName[5]} </div><div className="MCcharactername">Character</div><div className="MCcharactername">{props.data.castCharacterName[5]} </div>
+                      <img src={props.data.data.moviePage.cast[5].poster} alt="alt" className="MCPP" onClick={(m) => props.clicked(props.data.data.moviePage.cast[5])}/>
+                      <div className="MCRealname">{props.data.data.moviePage.cast[5].name} </div><div className="MCcharactername">Character</div><div className="MCcharactername">{props.data.data.moviePage.cast[5].job} </div>
                     </div>
 
                     <div className="MCrecDiv">
-                      <img src="https://i.pravatar.cc/290" className="MCPP"/>
-                      <div className="MCRealname">{props.data.castRealName[6]} </div><div className="MCcharactername">Character</div><div className="MCcharactername">{props.data.castCharacterName[6]} </div>
+                      <img src={props.data.data.moviePage.cast[6].poster} alt="alt" className="MCPP" onClick={(m) => props.clicked(props.data.data.moviePage.cast[6])}/>
+                      <div className="MCRealname">{props.data.data.moviePage.cast[6].name} </div><div className="MCcharactername">Character</div><div className="MCcharactername">{props.data.data.moviePage.cast[6].job} </div>
                     </div>
                    </div>                
                </div>

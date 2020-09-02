@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
 import './HomePage.css';
-import SearchBar from '../components/SearchBar';
-import HomeMovieInfo from '../components/HomeMovieInfo';
-import CarouselEx from '../components/CarouselEx';
 import MovieState from '../States/MovieState';
 import Topnav from '../components/MoviePageComponents/Topnav';
 import BgParticle from '../components/MoviePageComponents/BgParticle';
 import SearchBox from '../components/MoviePageComponents/SearchBox';
-import MovieToShow from '../components/MoviePageComponents/MovieToShow';
-import MovieInfoShow from '../components/MoviePageComponents/MovieInfoShow';
 import MovieInfoHome from '../components/HomePageComponent/MovieInfoHome';
+import CarouselEx from '../components/CarouselEx';
 
 
 
@@ -22,7 +18,7 @@ class HomePage extends Component{
 
     this.state={
       ...MovieState,
-      carouselData:''
+      carouselData:'null'
     }
 
 }
@@ -39,12 +35,15 @@ componentDidMount(){
 
     render() {
 
-   
-
+      let car;
       // console.log();
-      console.log('this.state',this.state);
+      console.log(this.state.carouselData);
 
-        return (
+      if ( this.state.carouselData !== 'null'){
+        car=<CarouselEx data={this.state.carouselData}/> }
+      else{car=''}
+
+          return (
 
 
           
@@ -54,11 +53,12 @@ componentDidMount(){
               <Topnav data={this.props.data} />
               <div>
                 <BgParticle/>
-                <SearchBox onSearch2={this.props.onSearch} />
+                <SearchBox data={this.props.data} ontype2={this.props.ontypeH} onEnter2={this.props.onEnter} />
                 <MovieInfoHome data={this.state} />
               </div>
               <div >
-                <CarouselEx data={this.state}/>
+                
+                {car}
               </div>
             </div>
           </div>
@@ -73,51 +73,3 @@ componentDidMount(){
 
 export default HomePage;
 
-
-
-      
-  // state = {
-  //   movies: [
-  //     {
-  //       name1: 'iron man',
-  //       link: "https://www.autocar.co.uk/sites/autocar.co.uk/files/images/car-reviews/first-drives/legacy/large-2479-s-classsaloon.jpg"
-  //     },
-  //     {
-  //       name1: 'thor',
-  //       link: "https://i.ytimg.com/vi/_adJBzQgfsg/maxresdefault.jpg"
-  //     }
-  //   ]
-  // };
-
-  // changeColor = () => {
-  //   let nbg = {...this.state};
-  //   nbg.bg="url(" + this.state.bglink + ")";
-  //   this.setState({...nbg});
-  //   console.log(this.state);
-  // }
-  
-// state={
-//   bg:"url(" + '' + ")",
-//   bglink:"https://i.ytimg.com/vi/_adJBzQgfsg/maxresdefault.jpg"
-// }
-// var clr = "https://www.autocar.co.uk/sites/autocar.co.uk/files/images/car-reviews/first-drives/legacy/large-2479-s-classsaloon.jpg";
-// var clr1 = "https://i.ytimg.com/vi/_adJBzQgfsg/maxresdefault.jpg";
-
-     // Movie Recommending System
-            
-          // <div>
-          //   <div className="Body" >
-          //   <Topnav data={this.state}/>
-          //     <nav className="Nav"><h3 className="Text">{this.state.movies[1].name1} </h3></nav>
-          //     <div className='BackGImg'>
-          //       <div>
-          //         <SearchBar className="test"/>
-          //         <HomeMovieInfo/>
-          //         <div>
-          //           <CarouselEx/>
-          //         </div>
-          //       </div>
-          //     </div>
-          //       <div className="test" style={{backgroundImage: this.state.bg}} onClick={this.changeColor}>kfgjdsj</div>
-          //     </div>    
-          // </div>

@@ -12,7 +12,7 @@ const MovieState = {
     
     castRealName: ['castReal1', 'castReal2', 'castReal3', 'castReal4', 'castReal5', 'castReal6', 'castReal7'],
     castCharacterName: ['castChar1', 'castChar2', 'castChar3', 'castChar4', 'castChar5', 'castChar6', 'castChar7'],
-    review: [
+    reviews: [
         
         ' "FROM STATE 1 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,ed diam voluptua. At vero eos et acc usam et justo duo." ',
         ' "FROM STATE 2 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,ed diam voluptua. At vero eos et acc usam et justo duo." ',
@@ -22,7 +22,7 @@ const MovieState = {
         ' "FROM STATE 6 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,ed diam voluptua.FROM STATE 1 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,ed diam voluptua. At vero eos et acc usam et justo duo At vero eos et acc usam et justo duo.FROM STATE 6 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,ed diam voluptua. At vero eos et acc usam et justo duo."  '
 
     ],
-    bg:"url(" + '' + ")",
+    bg:"url(" +  + ")",
     bglink:"https://i.ytimg.com/vi/_adJBzQgfsg/maxresdefault.jpg",
     suggestedMoviesLinks: [
 

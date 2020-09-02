@@ -2,11 +2,11 @@
     min-width: 500px;
     text-align: center;
     position: absolute;
-    top: 0;
+    top: 125px;
     right: 0;
     left: 0;
     /* background-color: slateblue; */
-    margin-top: 120px;
+    margin-top: 10px;
     margin-left: auto;
     margin-right: auto;
     width: 50%;
@@ -19,14 +19,14 @@
 @media only screen and (max-width: 550px) {
     .SearchBox{
         background-color: springgreen;
-        margin-top: 140px;
+        margin-top: 10px;
     }
    
 }
 
 .Round {
     
-    
+    padding-left: 10px;
     width: 80%;
     height: 30px;
     border-radius: 20px 0px 0px 20px;
@@ -36,7 +36,7 @@
 }
 
 .SearchButton{
-    height: 42px;
+    height: 34px;
     background-color: white;
     border: none;
     /* border-left: 1px rgba(97, 97, 97, 0.4) solid; */
@@ -50,3 +50,4 @@
     cursor: pointer;
 }
 
+.suggestion{cursor: pointer;}

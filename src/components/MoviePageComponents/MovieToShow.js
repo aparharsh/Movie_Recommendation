@@ -10,7 +10,7 @@ class MovieToShow extends Component{
 
 
     render() {
-        console.log(this.props.data);
+      //  console.log(this.props.data);
         return (
 
             <div>
@@ -19,7 +19,7 @@ class MovieToShow extends Component{
                         <BgParticle/>
                     </div>
 
-                    <SearchBox onSearch2={this.props.onSearch1} />
+                    <SearchBox data={this.props.data} ontype2={this.props.ontype1} onEnter2={this.props.onEnter1} />
                     <MovieInfoShow data={this.props.data} />
                     {/* <div className="BAFixSearchBox">
                         

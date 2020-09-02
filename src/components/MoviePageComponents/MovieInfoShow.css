@@ -10,6 +10,7 @@
     margin-top: 210px;
     margin-left: 8px;
     border-radius: 5px 50px 5px;
+    z-index: 10;
 }
 .MISPosterbox{
     position: absolute;
@@ -86,6 +87,7 @@
     /* background-color: rgb(102, 163, 132); */
     margin-top: 0;
     border-radius: 05px 50px 0px 0px;
+    z-index: 10;
     
 }
 
@@ -99,6 +101,7 @@
     border-radius: 2px;
     margin-top: 2%;
     padding-top: 1%;
+    z-index: 10;
 }
 
 .MISMovieOverview{
@@ -108,14 +111,17 @@
     display: inline-block;
     margin-left: 4%;
     margin-top: 2%;
+    z-index: 10;
     /* background-color: springgreen; */
 }
 
 .MISTypeHeading{
     color: #FF6565;
+    z-index: 10;
 }
 .MISTypeBody{
     color: white;
     margin-left: 4px;
     margin-top: 4px;
+    z-index: 10;
 }

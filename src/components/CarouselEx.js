@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Carousel.css';
 import Slider from 'infinite-react-carousel';
-import MovieState from '../States/MovieState';
+// import MovieState from '../States/MovieState';
 
   
 
@@ -17,19 +17,7 @@ const settings =  {
 
 class CarouselEx extends Component {
 
-    constructor(props){
-        super(props);
-
-        
-    // var tifs =this.props.data.carouselData;	
-
-    // var tifOptions = Object.keys(tifs).map(function(key) {
-    //     return <div key={key} className="TFFbox" style={{backgroundImage:"url(" + tifs[key] + ")"}}></div>
-    // });
-
-    // console.log('tifs',tifs);
-       
-    }
+ 
 
 
     
@@ -37,96 +25,100 @@ class CarouselEx extends Component {
         
 
         return(
-            <div className="CDivMargin">
-                <Slider {...settings}>
+            <div style={{marginTop:'15px', paddingBottom:'15px'}} className="CDivMargin">
+            <Slider {...settings}>
 
-                    
-
-
+                
+                {/* {Object.entries(this.props.data).forEach( (k,v) => {
                     <div>
-                        <div className="NewC" style={{backgroundImage:"url(" + this.props.data.suggestedMoviesLinks[0] + ")"}} >
-                            <div className="CMoiveNameInDiv">
-                                {this.props.data.suggestedMoviesNames[0]}
-                                <div className="CHr"></div>
-                                Imdb: {this.props.data.suggestedMoviesImdb[0]}
-                            </div>
-                            
-                        </div>
+                    <div className="NewC" style={{backgroundImage:"url(" + {v} + ")"}} >
+                    <div className="CMoiveNameInDiv">
+                        {k}
                     </div>
-
-                    <div>
-                        <div className="NewC" style={{backgroundImage:"url(" + this.props.data.suggestedMoviesLinks[1] + ")"}}>
-                            <div className="CMoiveNameInDiv">
-                                {this.props.data.suggestedMoviesNames[1]}
-                                <div className="CHr"></div>
-                                Imdb: {this.props.data.suggestedMoviesImdb[2]}
-                            </div>  
-
-                        </div>
                     </div>
-
-                    <div>
-                        <div className="NewC"  style={{backgroundImage:"url(" + this.props.data.suggestedMoviesLinks[2] + ")"}}>
-                            <div className="CMoiveNameInDiv">
-                                {this.props.data.suggestedMoviesNames[3]}
-                                <div className="CHr"></div>
-                                Imdb: {this.props.data.suggestedMoviesImdb[3]}
-                            </div>    
-                        </div>
                     </div>
+                })
+            }                    */}
 
-                    <div>
-                        <div className="NewC" style={{backgroundImage:"url(" + this.props.data.suggestedMoviesLinks[3] + ")"}}>
-                            <div className="CMoiveNameInDiv">
-                                {this.props.data.suggestedMoviesNames[4]}
-                                <div className="CHr"></div>
-                                Imdb: {this.props.data.suggestedMoviesImdb[1]}
-                            </div>
-                        </div>
+                {/* <div>
+                    <div className="NewC" style={{backgroundImage:"url(" + this.props.data.suggestedMoviesLinks[1] + ")"}}>
+                        <div className="CMoiveNameInDiv">
+                            {this.props.data.suggestedMoviesNames[1]}
+                            <div className="CHr"></div>
+                            Imdb: {this.props.data.suggestedMoviesImdb[2]}
+                        </div>  
+
                     </div>
-
-                    <div>
-                        <div className="NewC" style={{backgroundImage:"url(" + this.props.data.suggestedMoviesLinks[4] + ")"}}>
-                            <div className="CMoiveNameInDiv">
-                                {this.props.data.suggestedMoviesNames[5]}
-                                <div className="CHr"></div>
-                                Imdb: {this.props.data.suggestedMoviesImdb[4]}
-                            </div>
-                        </div>
+                </div> */}
+                
+                <div>
+                    <div className="NewC" style={{backgroundImage:"url(" + Object.values(this.props.data)[0] + ")"}} >
+                        {/* <div className="CMoiveNameInDiv">
+                            {Object.keys(this.props.data)[0]}
+                        </div> */}
+                        
                     </div>
+                </div>
 
-                    <div>
-                        <div className="NewC" style={{backgroundImage:"url(" + this.props.data.suggestedMoviesLinks[5] + ")"}}>
-                            <div className="CMoiveNameInDiv">
-                                {this.props.data.suggestedMoviesNames[6]}
-                                <div className="CHr"></div>
-                                Imdb: {this.props.data.suggestedMoviesImdb[5]}
-                            </div>
-                        </div>
+                <div>
+                    <div className="NewC" style={{backgroundImage:"url(" + Object.values(this.props.data)[1] + ")"}}>
+                        {/* <div className="CMoiveNameInDiv">
+                            {Object.keys(this.props.data)[1]}
+                        </div>   */}
+
                     </div>
+                </div>
 
-                    <div>
-                        <div className="NewC" style={{backgroundImage:"url(" + this.props.data.suggestedMoviesLinks[6] + ")"}}>
-                            <div className="CMoiveNameInDiv">
-                                {this.props.data.suggestedMoviesNames[2]}
-                                <div className="CHr"></div>
-                                Imdb2: {this.props.data.suggestedMoviesImdb[6]}
-                            </div>
-                        </div>
+                <div>
+                    <div className="NewC"  style={{backgroundImage:"url(" + Object.values(this.props.data)[2] + ")"}}>
+                        {/* <div className="CMoiveNameInDiv">
+                            {Object.keys(this.props.data)[2]}
+                        </div>     */}
                     </div>
+                </div>
 
-                    <div>
-                        <div className="NewC" style={{backgroundImage:"url(" + this.props.data.suggestedMoviesLinks[7] + ")"}}>
-                            <div className="CMoiveNameInDiv">
-                                {this.props.data.suggestedMoviesNames[7]}
-                                <div className="CHr"></div>
-                                Imdb: {this.props.data.suggestedMoviesImdb[7]}
-                            </div> 
-                        </div>
+                <div>
+                    <div className="NewC" style={{backgroundImage:"url(" + Object.values(this.props.data)[3] + ")"}}>
+                        {/* <div className="CMoiveNameInDiv">
+                            {Object.keys(this.props.data)[3]}
+                        </div> */}
                     </div>
+                </div>
 
-                </Slider>
-            </div>
+                <div>
+                    <div className="NewC" style={{backgroundImage:"url(" + Object.values(this.props.data)[4] + ")"}}>
+                        {/* <div className="CMoiveNameInDiv">
+                            {Object.keys(this.props.data)[4]}
+                        </div> */}
+                    </div>
+                </div>
+
+                <div>
+                    <div className="NewC" style={{backgroundImage:"url(" + Object.values(this.props.data)[5] + ")"}}>
+                        {/* <div className="CMoiveNameInDiv">
+                            {Object.keys(this.props.data)[5]}
+                        </div> */}
+                    </div>
+                </div>
+
+                <div>
+                    <div className="NewC" style={{backgroundImage:"url(" + Object.values(this.props.data)[6] + ")"}}>
+                        {/* <div className="CMoiveNameInDiv">
+                            {Object.keys(this.props.data)[6]}
+                        </div> */}
+                    </div>
+                </div>
+
+                <div>
+                    <div className="NewC" style={{backgroundImage:"url(" + Object.values(this.props.data)[7] + ")"}}>
+                        {/* <div className="CMoiveNameInDiv">
+                            {Object.keys(this.props.data)[7]}
+                        </div>  */}
+                    </div>
+                </div> 
+
+            </Slider>
+        </div>
         );
     }
 }

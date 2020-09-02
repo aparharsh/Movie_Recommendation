@@ -1,21 +1,42 @@
 import React, { Component } from 'react';
 import './MultiSDropDown.css';
+import FilterBar from '../../components/MoviePageComponents/FilterBar';
 
 
 
 class MultiSDropDownT extends Component{
 
 
-  
+    state={
+        Language:true,
+        Popularity:false,
+        Director:false,
+        Genre:false,
+        Actor:false
+    }
+    
+
+  checkC = (e) => {
+    console.log('CheckCEvent',e.target.value)
+    this.setState({
+      [e.target.value]:e.target.checked
+    })
+    
+
+    // if(this.state.l){
+    //   this.setState({l:false});
+    // }else{
+    //   this.setState({l:true});
+    // }
+  }
 
     render() {
+      console.log('CurrState',this.state)
         
         return (
                 
-            <div  className="FContainer">
-               <i className="fa fa-angle-down"></i>
-               <i className="fa fa-caret-down"></i>
-               <i className="fa fa-search"></i>
+            <div >
+               <FilterBar data={this.state} changeC={this.checkC}/>
             </div>
 
         );

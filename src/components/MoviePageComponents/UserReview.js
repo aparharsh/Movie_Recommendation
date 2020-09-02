@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Slider from 'infinite-react-carousel';
 import './UserReview.css';
 
@@ -12,6 +12,7 @@ const settings =  {
   };
 
 const UserReview = (props) => {
+    // console.log('URProps',props.data.data.moviePage.comments)
     return(
         <div className="URboxes">
             <div className="URHeader">User Reviews</div>
@@ -19,7 +20,7 @@ const UserReview = (props) => {
             <div>
                 <div className="URreviewBox">
                     <div className="URTexts">
-                     {props.data.review[0]}
+                     {props.data.data.moviePage.comments[0].comment}
                     </div>
                     <div className="URRatings">
                         Rating
@@ -29,7 +30,7 @@ const UserReview = (props) => {
             <div>
                 <div className="URreviewBox">
                     <div className="URTexts">
-                        {props.data.review[1]}
+                        {props.data.data.moviePage.comments[1].comment}
                     </div>
                     <div className="URRatings">
                         Rating
@@ -39,7 +40,7 @@ const UserReview = (props) => {
             <div>
                 <div className="URreviewBox">
                     <div className="URTexts">
-                        {props.data.review[2]}    
+                        {props.data.data.moviePage.comments[2].comment}    
                     </div>
                     <div className="URRatings">
                         Rating
@@ -49,7 +50,7 @@ const UserReview = (props) => {
             <div>
                 <div className="URreviewBox">
                     <div className="URTexts">
-                        {props.data.review[3]}
+                        {props.data.data.moviePage.comments[3].comment}
                     </div>
                     <div className="URRatings">
                         Rating
@@ -59,7 +60,7 @@ const UserReview = (props) => {
             <div>
                 <div className="URreviewBox">
                     <div className="URTexts">
-                        {props.data.review[4]}
+                        {props.data.data.moviePage.comments[4].comment}
                         </div>
                         <div className="URRatings">
                             Rating
@@ -69,7 +70,7 @@ const UserReview = (props) => {
             <div>
                 <div className="URreviewBox">
                     <div className="URTexts">
-                    {props.data.review[5]}
+                    {props.data.data.moviePage.comments[4].comment}
                     </div>
                     <div className="URRatings">
                         Rating

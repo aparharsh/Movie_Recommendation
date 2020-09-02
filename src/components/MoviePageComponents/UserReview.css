@@ -22,7 +22,7 @@
 }
 .URTexts{
     height: 300px;
-    overflow: hidden;
+    overflow:auto;
     padding: 20px;
     text-align: center;
     /* background-color: turquoise; */
@@ -55,7 +55,7 @@
     .URTexts{
         height: 230px;
         padding: 10px;
-        overflow: hidden;
+        /* overflow: hidden; */
     }
     .URRatings{
         padding: 10px;
@@ -74,7 +74,7 @@
     .URTexts{
         height: 140px;
         padding: 10px;
-        overflow: hidden;
+        /* overflow: hidden; */
     }
     .URRatings{
         padding:5px ;
@@ -93,7 +93,7 @@
     .URTexts{
         height: 140px;
         padding: 10px;
-        overflow: hidden;
+        /* overflow: hidden; */
         display: none;
     }
     .URRatings{
