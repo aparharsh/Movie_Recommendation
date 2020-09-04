@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import './SearchBox.css';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 
 const SearchBox = (props) => {
 
      // for array of titles recieved form api.
      const [a, setA] = useState( [] );
+
+     // for sending title name through props
+     const [b, setB] = useState( [] )
 
      // for changing the styling of a list element.
      const [hovIdx, setHovIdx] = useState( '' );
@@ -13,7 +17,9 @@ const SearchBox = (props) => {
      // calling suggestions API.
      const suggest = (e) => {
          setHovIdx('')
+         setB(e.target.value)
          console.log(e.target.value)
+         props.ontype2(e.target.value)
          if(e.target.value===''){
              setA([])
          }
@@ -30,7 +36,10 @@ const SearchBox = (props) => {
  
      // clicking a suggestion or clciking enter in the input box, will send to another page.
      const send = (e) => {
+
          console.log(e.currentTarget.innerText)
+         props.onEnter2();
+         props.history.push('/movie');
      }
  
      // when mouse hover over the list item
@@ -38,7 +47,11 @@ const SearchBox = (props) => {
          remov()
          console.log(e.currentTarget.id)
          setHovIdx(e.currentTarget.id)
+
          e.currentTarget.style.fontSize='20px'
+
+         console.log('mouse', hovIdx) 
+         props.ontype2(document.getElementById(e.currentTarget.id).innerText);
  
      }
  
@@ -46,7 +59,9 @@ const SearchBox = (props) => {
      const revChng = (e) => {
          remov()
          setHovIdx('')
+
          e.currentTarget.style.fontSize='15px'
+
      }
  
      // when use keyboard to move over the list items
@@ -59,8 +74,8 @@ const SearchBox = (props) => {
              if (e.keyCode === 38){
                  console.log('up')
                  
-                 if (hovIdx===0 || hovIdx===''){
-                     return;
+                 if (hovIdx==='0' || hovIdx===''){
+                    return;
                  }
                  
                  else{
@@ -69,13 +84,14 @@ const SearchBox = (props) => {
  
                      let x=document.getElementById(Number(hovIdx)-1)
                      x.style.fontSize='20px'
+                     props.ontype2(x.innerText);
                      
                  }
              }
              else if (e.keyCode === 40){
                  console.log('down')
  
-                 if (hovIdx == a.length-1) {
+                 if (hovIdx == (a.length-1).toString()) {
                      return;
                  }
  
@@ -92,13 +108,21 @@ const SearchBox = (props) => {
  
                      let x=document.getElementById(Number(hovIdx)+1)
                      x.style.fontSize='20px'
+
+                     props.ontype2(x.innerText);
                  }
              }
              else if (e.keyCode === 13){
                  console.log('enter')
- 
+                 if(hovIdx){
                  let x=document.getElementById(hovIdx)
                  console.log(x.innerText)
+                 console.log('sent')
+                 
+                //  props.ontype2(x.innerText);
+                 props.onEnter2();
+                 props.history.push('/movie');
+                 }   
              }
          }
      }
@@ -137,16 +161,23 @@ const SearchBox = (props) => {
         <div className="SearchBox" >
             <label htmlFor="search"></label>
 
-            <input className="Round" type="text" placeholder="search" value={props.data.searchtypeq} onChange={suggest} onKeyDown={keyChng} onChange={props.ontype2} /> 
-            <Link to="/movie">
-                <button className="SearchButton" type="submit" onClick={props.onEnter2}>
+            <input className="Round" type="text" placeholder="search" onChange={suggest} onKeyDown={keyChng} /> 
+
+            
+            
+                <button className="SearchButton" onClick={()=>{
+                    props.onEnter2();
+                    props.history.push('/movie');
+                 }
+                }>
                     <span className="SearchIcon">
                         <i className="fa fa-search"></i>
                     </span>
                 </button>
-                {sug}
-            </Link>
+                
+            
+            {sug}
         </div>
     );
 }
-export default SearchBox;
+export default withRouter(SearchBox);

@@ -40,9 +40,10 @@ class MoviePageComponents extends Component{
         })
     }
         
+    
 
     render() {
-
+        console.log('apar');
 
         let p;
         // console.log('moviepage Props Shown',this.props.data.moviePage);

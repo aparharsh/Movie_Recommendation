@@ -16,7 +16,7 @@ class Modal extends Component {
       <div>
         <Backdrop showB={this.props.data.Modalstate} clicked={this.props.hideM}/>
         <div className="Modal">
-          <ActorInfo data={this.props.data.ModalProps} ThMod={this.props.TMod}/>
+          <ActorInfo data={this.props.data.ModalProps} click={this.props.hideM} ThMod={this.props.TMod}/>
         </div> 
       </div>
 

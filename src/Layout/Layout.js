@@ -4,7 +4,6 @@ import Test from '../Layout/Testing/Test';
 import MoviePageComponents from '../components/MoviePageComponents/MoviePageComponents';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-
 class Layout extends Component{
 
 
@@ -21,7 +20,7 @@ class Layout extends Component{
     onChangeHandler = (event) => {
         console.log('onType');
          this.setState({
-             searchtypeq: event.target.value  
+             searchtypeq: event
         })
     }
     recClickHandler = (m) => {
@@ -42,7 +41,7 @@ class Layout extends Component{
       this.onSearchHandler();
 
     }
-    onSearchHandler = () => {
+    onSearchHandler = ( ) => {
       this.setState({
         moviePage:''
       });
@@ -54,6 +53,8 @@ class Layout extends Component{
         }).then(response => response.json())
         .then(d => this.setState({moviePage:d}))
         
+
+        console.log('1',this.state.searchtypeq )
         // fetch('http://127.0.0.1:5000/recom',{
         //     method:'POST',
         //     headers:{'Content-type':'application/json'},
@@ -79,7 +80,6 @@ class Layout extends Component{
         
           <Route exact path="/" render={ () => <HomePage data={this.state} ontypeH={this.onChangeHandler} onEnter={this.onSearchHandler}/>  } />
           <Route exact path="/movie" render={ () => <MoviePageComponents data={this.state} OMod={this.modClickHandler} ORecm={this.recClickHandler} ontypeM={this.onChangeHandler} onEnter={this.onSearchHandler} /> } />
-         
          
           {/* <MoviePageComponents data={this.state} onSearch={this.onChangeHandler} /> */}
         
