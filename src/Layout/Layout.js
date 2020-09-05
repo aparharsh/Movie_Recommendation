@@ -16,6 +16,15 @@ class Layout extends Component{
         moviePage:''
     };
 
+    componentDidMount(){
+      sessionStorage.moviePage=''
+      // console.log('setP')
+    }
+
+    chng = (e) =>{
+      this.setState({moviePage:e})
+      console.log('done1')
+    }
 
     onChangeHandler = (event) => {
         console.log('onType');
@@ -50,15 +59,7 @@ class Layout extends Component{
             headers:{'Content-type':'application/json'},
             body:JSON.stringify({title:this.state.searchtypeq})
         }).then(response => response.json())
-        .then(d => { 
-          console.log(typeof d);
-          if(typeof d == "string"){
-            alert(d);
-          }
-          else{this.setState({moviePage:d});}
-
-      
-      })
+        .then(d => this.setState({moviePage:d}) )
         
 
         console.log('1',this.state.searchtypeq )
@@ -78,6 +79,7 @@ class Layout extends Component{
         
       // console.log('searchtypeq',this.state.searchtypeq);
         console.log('stateafterFetch',this.state.moviePage);
+        console.log('searchTypeEq', this.state.searchtypeq)
         return (
 
           <Router>
@@ -86,7 +88,7 @@ class Layout extends Component{
 
         
           <Route exact path="/" render={ () => <HomePage data={this.state} ontypeH={this.onChangeHandler} onEnter={this.onSearchHandler}/>  } />
-          <Route exact path="/movie" render={ () => <MoviePageComponents data={this.state} filT={this.state.searchtypeq} OMod={this.modClickHandler} ORecm={this.recClickHandler} ontypeM={this.onChangeHandler} onEnter={this.onSearchHandler} /> } />
+          <Route exact path="/movie" render={ () => <MoviePageComponents data={this.state} chng={this.chng} filT={this.state.searchtypeq} OMod={this.modClickHandler} ORecm={this.recClickHandler} ontypeM={this.onChangeHandler} onEnter={this.onSearchHandler} /> } />
          
           {/* <MoviePageComponents data={this.state} onSearch={this.onChangeHandler} /> */}
         

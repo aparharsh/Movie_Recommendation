@@ -8,6 +8,8 @@ import RecommendedMovies from './RecommendedMovies';
 import Modal from '../Modal/Modal';
 import Loader from '../UI/Loader';
 
+import {withRouter} from 'react-router-dom';
+
 
 
 class MoviePageComponents extends Component{
@@ -23,6 +25,22 @@ class MoviePageComponents extends Component{
         Actor:false
     };
 
+    componentDidMount(){
+        console.log('mount')
+        if( sessionStorage.moviePage !== ''){
+          if(this.props.data.moviePage === ''){
+            console.log('ssTitle', sessionStorage.moviePage)
+            fetch('http://127.0.0.1:5000/recom',{
+              method:'POST',
+              headers:{'Content-type':'application/json'},
+              body:JSON.stringify({title : sessionStorage.moviePage})
+          }).then(response => response.json())
+          .then(d => this.props.chng(d) )
+            // console.log('done')
+          }
+        }
+      }
+      
     ModalShowHandler = (m) => {
         this.setState({Modalstate:true});
         this.setState({ModalProps:m});
@@ -41,9 +59,9 @@ class MoviePageComponents extends Component{
     }
         
     
+    
 
     render() {
-        console.log('apar');
 
         let p;
         // console.log('moviepage Props Shown',this.props.data.moviePage);
@@ -51,8 +69,14 @@ class MoviePageComponents extends Component{
         // <div style={{backgroundColor:'yellow'}}>hi</div>
 
         if(this.props.data.moviePage === ''){
-             p = <Loader/>
-        }else{
+                p = <Loader/>
+        }
+        else if(typeof this.props.data.moviePage == 'string'){
+            alert(this.props.data.moviePage);
+            this.props.history.push('/');
+        }
+        else{
+            sessionStorage.moviePage=this.props.data.moviePage.title
             p = <div >
                     {this.state.Modalstate ? <Modal data={this.state} TMod={this.props.OMod} hideM={this.hide}/> : null}
                     <Topnav data={this.props}/>
@@ -86,4 +110,4 @@ class MoviePageComponents extends Component{
 }
 
 
-export default MoviePageComponents;
+export default withRouter(MoviePageComponents);

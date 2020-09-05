@@ -79,6 +79,7 @@
     height: 350px;
     border-radius: 10px 10px 0px 0px;
     box-shadow: 0px 2px 20px 1px #000000a1;
+    cursor: pointer;
     
 }
 .RMcontainer

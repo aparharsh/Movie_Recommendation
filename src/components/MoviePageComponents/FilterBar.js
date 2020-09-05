@@ -22,7 +22,7 @@ class FilterBar extends Component{
             method:'POST',
             headers:{'Content-type':'application/json'},
             body:JSON.stringify({
-                title : this.props.filT,
+                title : this.props.data.data.moviePage.title,
                 cast : this.state.act ? 1 : 0,
                 director : this.state.dir ? 1 : 0,
                 genre : this.state.gen ? 1 : 0,
@@ -42,7 +42,6 @@ class FilterBar extends Component{
     }
 
     render() {
-        // console.log('filterbar',this.props.fdata.Language)
         
         return (
                 
