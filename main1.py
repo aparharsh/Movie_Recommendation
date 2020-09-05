@@ -38,7 +38,7 @@ def cast_crew(id):
             for j in df[df['dir_name']==i['name']].sort_values(by=['imdb_votes'], ascending=False).index:
                 if len(lis)>4:break
                 lis.append(df['original_title'][j])
-            dic.append({ 'job':'director',
+            dic.append({ 'job':'Director',
                         'name':i,
                         'bio':'Unavailable',
                         'poster':'Unavailable',
@@ -51,7 +51,7 @@ def cast_crew(id):
             for j in df[df['actors']==i['name']].sort_values(by=['imdb_votes'], ascending=False).index:
                 if len(lis)>4:break
                 lis.append(df['original_title'][j])
-            dic.append({ 'job':'actor',
+            dic.append({ 'job':'Actor',
                         'name':i,
                         'bio':'Unavailable',
                         'poster':'Unavailable',
@@ -66,7 +66,7 @@ def cast_crew(id):
                 for j in df[df['dir_name']==i['name']].sort_values(by=['imdb_votes'], ascending=False).index:
                     if len(lis)>4:break
                     lis.append(df['original_title'][j])
-                dic.append({ 'job':'director',
+                dic.append({ 'job':'Director',
                             'name':i,
                             'bio':'Unavailable',
                             'poster':'Unavailable',
@@ -83,7 +83,7 @@ def cast_crew(id):
                         lis.append(df['original_title'][j])
                     id1 = i['id']
                     response1 = requests.get('https://api.themoviedb.org/3/person/' + str(id1) + '?api_key='+api_key)
-                    dic.append({'job':'director',
+                    dic.append({'job':'Director',
                                 'name':response1.json()['name'],
                                 'bio':response1.json()['biography'],
                                 'poster':'Unavailable' if response1.json()['profile_path']==None else 'http://image.tmdb.org/t/p/original/' + response1.json()['profile_path'],
@@ -98,7 +98,7 @@ def cast_crew(id):
                 for j in df[df['actors'].str.contains(i['name'])].sort_values(by=['imdb_votes'], ascending=False).index:
                     if len(lis)>4:break
                     lis.append(df['original_title'][j])
-                dic.append({ 'job':'actor',
+                dic.append({ 'job':'Actor',
                             'name':i,
                             'bio':'Unavailable',
                             'poster':'Unavailable',
@@ -114,7 +114,7 @@ def cast_crew(id):
                     lis.append(df['original_title'][j])
                 id1 = i['id']
                 response1 = requests.get('https://api.themoviedb.org/3/person/' + str(id1) + '?api_key='+api_key)
-                dic.append({'job':'actor',
+                dic.append({'job':'Actor',
                             'name':response1.json()['name'],
                             'bio':response1.json()['biography'],
                             'poster':'Unavailable' if response1.json()['profile_path']==None else 'http://image.tmdb.org/t/p/original/' + response1.json()['profile_path'],
@@ -297,22 +297,33 @@ def cmnt(id):
 # top 10 movies to be sent for the start page.
 @app.route('/home', methods = ['GET'])
 def home_data():
-    home_dt={}
+    # home_dt={}
+    home_dt=[]
     df1=df[df['language']=='hi']
     for i in df1.sort_values(by='imdb_votes', ascending=False).head(3).index:
         p_p = df1['poster_path'][i]
-        home_dt[df1['original_title'][i]] = p_p if p_p.count('/')>3 else 'http://image.tmdb.org/t/p/original/' + p_p
+        home_dt.append({'title' : df1['original_title'][i],
+        				'poster_path' : p_p if p_p.count('/')>3 else 'http://image.tmdb.org/t/p/original/' + p_p,
+        				'genres' : df1['genres'][i].split('|'),
+        				'rating' : df1['imdb_id'][i],
+        				'vote_count' : df1['imdb_votes'][i],
+        				'overview':df['story'][i] }) 
     df1=df[df['language']=='en']
     for i in df1.sort_values(by='imdb_votes', ascending=False).head(7).index:
         p_p = df1['poster_path'][i]
-        home_dt[df1['original_title'][i]] = p_p if p_p.count('/')>3 else 'http://image.tmdb.org/t/p/original/' + p_p
+        home_dt.append({'title' : df1['original_title'][i],
+        				'poster_path' : p_p if p_p.count('/')>3 else 'http://image.tmdb.org/t/p/original/' + p_p,
+        				'genres' : df1['genres'][i].split('|'),
+        				'rating' : df1['imdb_id'][i],
+        				'vote_count' : df1['imdb_votes'][i],
+        				'overview':df['story'][i] })
     return jsonify(home_dt)
 
 # suggestions while the user types the title.
 @app.route('/suggestions', methods = ['POST'])
 def suggestions():
 	s = request.get_json()['title'].lower()
-	return jsonify(df[df['search_title'].str.contains(s)].sort_values(by='imdb_votes', ascending = False).head()['original_title'].values.tolist())
+	return jsonify(df[df['search_title'].str.contains(s)].sort_values(by='imdb_rating', ascending = False).head()['original_title'].values.tolist())
 
 # when the user searches a movie title.
 @app.route('/recom', methods = ['POST'])
