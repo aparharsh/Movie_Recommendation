@@ -27,13 +27,13 @@ class ActorInfo extends Component {
             <div className="AILeftPopular">
               Popular Movies : 
               <span onClick={ (m) => {this.props.ThMod(this.props.data.known_for[0]);
-              this.props.click;}}>   { this.props.data.known_for[0]} &nbsp; </span>
+              this.props.click();}}>   { this.props.data.known_for[0]} &nbsp; </span>
               <span onClick={ (m) => {this.props.ThMod(this.props.data.known_for[1]);
-              this.props.click;}}> |&nbsp; { this.props.data.known_for[1]} &nbsp; </span>
+              this.props.click();}}> |&nbsp; { this.props.data.known_for[1]} &nbsp; </span>
               <span onClick={ (m) => {this.props.ThMod(this.props.data.known_for[2]);
-              this.props.click;}}> |&nbsp; { this.props.data.known_for[2]} &nbsp; </span>
+              this.props.click();}}> |&nbsp; { this.props.data.known_for[2]} &nbsp; </span>
               <span onClick={ (m) => {this.props.ThMod(this.props.data.known_for[3]);
-              this.props.click;}}> |&nbsp; { this.props.data.known_for[3]} &nbsp; </span>
+              this.props.click();}}> |&nbsp; { this.props.data.known_for[3]} &nbsp; </span>
             </div>
             {/* <div className="AIAboutP" style={{backgroundColor:'yellow',backgroundImage:"url(" + this.props.data.poster + ")"}}></div> */}
             {/* backgroundImage:"url(" + this.props.data.poster + ")" */}

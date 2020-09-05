@@ -37,8 +37,7 @@ class Layout extends Component{
       this.setState({
         searchtypeq: m ,
         moviePage:''
-      });
-      this.onSearchHandler();
+      }, ()=>this.onSearchHandler());
 
     }
     onSearchHandler = ( ) => {

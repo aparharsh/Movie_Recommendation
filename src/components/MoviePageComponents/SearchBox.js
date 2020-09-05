@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './SearchBox.css';
-import { Link, Redirect } from 'react-router-dom';
 import {withRouter} from 'react-router-dom';
 
 const SearchBox = (props) => {
@@ -8,16 +7,12 @@ const SearchBox = (props) => {
      // for array of titles recieved form api.
      const [a, setA] = useState( [] );
 
-     // for sending title name through props
-     const [b, setB] = useState( [] )
-
      // for changing the styling of a list element.
      const [hovIdx, setHovIdx] = useState( '' );
  
      // calling suggestions API.
      const suggest = (e) => {
          setHovIdx('')
-         setB(e.target.value)
          console.log(e.target.value)
          props.ontype2(e.target.value)
          if(e.target.value===''){
