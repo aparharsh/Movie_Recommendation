@@ -12,7 +12,7 @@ class MovieToShow extends Component{
     render() {
       //  console.log(this.props.data);
         return (
-
+ 
             <div>
                 <div className="BAContainer">
                     <div className="BAbox">

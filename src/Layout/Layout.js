@@ -28,8 +28,8 @@ class Layout extends Component{
       this.setState({
         searchtypeq: m ,
         moviePage:''
-      });
-      this.onSearchHandler();
+      }, ()=>this.onSearchHandler());
+      
 
     }
     modClickHandler = (m) => {
@@ -50,7 +50,15 @@ class Layout extends Component{
             headers:{'Content-type':'application/json'},
             body:JSON.stringify({title:this.state.searchtypeq})
         }).then(response => response.json())
-        .then(d => this.setState({moviePage:d}))
+        .then(d => { 
+          console.log(typeof d);
+          if(typeof d == "string"){
+            alert(d);
+          }
+          else{this.setState({moviePage:d});}
+
+      
+      })
         
 
         console.log('1',this.state.searchtypeq )
@@ -78,7 +86,7 @@ class Layout extends Component{
 
         
           <Route exact path="/" render={ () => <HomePage data={this.state} ontypeH={this.onChangeHandler} onEnter={this.onSearchHandler}/>  } />
-          <Route exact path="/movie" render={ () => <MoviePageComponents data={this.state} OMod={this.modClickHandler} ORecm={this.recClickHandler} ontypeM={this.onChangeHandler} onEnter={this.onSearchHandler} /> } />
+          <Route exact path="/movie" render={ () => <MoviePageComponents data={this.state} filT={this.state.searchtypeq} OMod={this.modClickHandler} ORecm={this.recClickHandler} ontypeM={this.onChangeHandler} onEnter={this.onSearchHandler} /> } />
          
           {/* <MoviePageComponents data={this.state} onSearch={this.onChangeHandler} /> */}
         

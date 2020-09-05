@@ -59,7 +59,7 @@ class MoviePageComponents extends Component{
                     <MovieToShow data={this.props} ontype1={this.props.ontypeM} onEnter1={this.props.onEnter} />
                     <MovieCasts data={this.props} clicked={this.ModalShowHandler} />
                     <UserReview data={this.props}/>
-                    <RecommendedMovies data={this.props} TRecm={this.props.ORecm} filter={this.state} click1={this.checkC}/>       
+                    <RecommendedMovies data={this.props} filT={this.props.filT} TRecm={this.props.ORecm} filter={this.state} click1={this.checkC}/>       
                 </div>
         }
         

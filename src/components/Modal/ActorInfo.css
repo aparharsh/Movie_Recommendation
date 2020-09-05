@@ -50,6 +50,13 @@
     margin-top: 2px;
     color: rgb(73, 73, 73);
 }
+.ModalKF{
+    color: blue;
+    cursor: pointer;
+}
+.ModalKF:hover{
+    color: purple;
+}
 
 
 

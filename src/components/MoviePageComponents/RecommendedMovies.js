@@ -1,9 +1,44 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './RecommendedMovies.css';
 import FilterBar from './FilterBar';
 
-const RecommendedMovies = (props) => {
+class RecommendedMovies extends Component{
     // console.log('RMProps',props.filter)
+
+    constructor(props){
+        super(props);
+        this.state={
+            filMov : ''
+        }
+    }
+
+    componentDidMount(){
+        this.setState({filMov:this.props.data.data.moviePage.recom_mov})
+    }
+
+    filSet = (me) => {
+        console.log(me)
+        this.setState({filMov : me.fil_mov})
+    }
+
+    render(){
+        let p;
+        if(this.state.filMov!=''){
+            p = ( this.state.filMov.map((s, idx)=>{
+                return(
+                    <div className="RMnameMovie" key={idx} onClick={(m) => this.props.TRecm(s.title)}>
+                        <div className="RMposter" style={{backgroundImage:"url(" + s.poster_path + ")"}} >
+
+                        </div>
+                        <div className="RMName">
+                            <strong>{s.title} </strong>
+                        </div>
+                    </div>
+                )
+            })
+            )
+        }
+        else{p='Loading....'}
 
     return(
         <div>
@@ -12,107 +47,12 @@ const RecommendedMovies = (props) => {
                     <div className="RMheading">
                         Recommended Movies
                     </div>
-                    <FilterBar data={props.data} fdata={props.filter} changeC={props.click1}/>
+                    <FilterBar data={this.props.data} filT={this.props.filT} fdata={this.props.filter} fSet={this.filSet} changeC={this.props.click1}/>
+
                     <div className="RMcontainer">
-                        {/* <div className="RMmovieBox1"> */}
-                            <div className="RMnameMovie" onClick={(m) => props.TRecm(props.data.data.moviePage.recom_mov[0].title)}>
-                                <div className="RMposter" style={{backgroundImage:"url(" + props.data.data.moviePage.recom_mov[0].poster_path + ")"}} >
-                                {/* props.data.recomendedMoviesLinks[0] */}
-                                </div>
-                                <div className="RMName">
-                                    <strong>{props.data.data.moviePage.recom_mov[0].title} </strong>
-                                </div>
-                            </div>
+                            
+                            {p}
 
-                            <div className="RMnameMovie" onClick={(m) => props.TRecm(props.data.data.moviePage.recom_mov[1].title)}>
-                                <div className="RMposter"  style={{backgroundImage:"url(" + props.data.data.moviePage.recom_mov[1].poster_path + ")"}}>
-
-                                </div>
-                                <div className="RMName">
-                                    <strong>{props.data.data.moviePage.recom_mov[1].title} </strong>
-                                </div>
-                            </div>
-
-                            <div className="RMnameMovie" onClick={(m) => props.TRecm(props.data.data.moviePage.recom_mov[2].title)}>
-                                <div className="RMposter"  style={{backgroundImage:"url(" + props.data.data.moviePage.recom_mov[2].poster_path + ")"}}>
-
-                                </div>
-                                <div className="RMName">
-                                    <strong>{props.data.data.moviePage.recom_mov[2].title} </strong>
-                                </div>
-                            </div>
-
-                            <div className="RMnameMovie" onClick={(m) => props.TRecm(props.data.data.moviePage.recom_mov[3].title)}>
-                                <div className="RMposter"  style={{backgroundImage:"url(" + props.data.data.moviePage.recom_mov[3].poster_path + ")"}}>
-
-                                </div>
-                                <div className="RMName">
-                                    <strong>{props.data.data.moviePage.recom_mov[3].title} </strong>
-                                </div>
-                            </div>
-
-                            <div className="RMnameMovie" onClick={(m) => props.TRecm(props.data.data.moviePage.recom_mov[4].title)}>
-                                <div className="RMposter"  style={{backgroundImage:"url(" + props.data.data.moviePage.recom_mov[4].poster_path + ")"}}>
-
-                                </div>
-                                <div className="RMName">
-                                    <strong>{props.data.data.moviePage.recom_mov[4].title} </strong>
-                                </div>
-                            </div>
-
-                        {/* </div> */}
-                    {/* </div>
-
-                    <div className="RMcontainer"> */}
-                        {/* <div className="RMmovieBox2"> */}
-                            <div className="RMnameMovie" onClick={(m) => props.TRecm(props.data.data.moviePage.recom_mov[5].title)}>
-                                <div className="RMposter"  style={{backgroundImage:"url(" + props.data.data.moviePage.recom_mov[5].poster_path + ")"}}>
-
-                                </div>
-                                <div className="RMName">
-                                    <strong>{props.data.data.moviePage.recom_mov[5].title} </strong>
-                                </div>
-                            </div>
-
-                            <div className="RMnameMovie" onClick={(m) => props.TRecm(props.data.data.moviePage.recom_mov[6].title)}>
-                                <div className="RMposter"  style={{backgroundImage:"url(" + props.data.data.moviePage.recom_mov[6].poster_path + ")"}}>
-
-                                </div>
-                                <div className="RMName">
-                                    <strong>{props.data.data.moviePage.recom_mov[6].title} </strong>
-                                </div>
-                            </div>
-
-                            <div className="RMnameMovie" onClick={(m) => props.TRecm(props.data.data.moviePage.recom_mov[7].title)}>
-                                <div className="RMposter"  style={{backgroundImage:"url(" + props.data.data.moviePage.recom_mov[7].poster_path + ")"}}>
-
-                                </div>
-                                <div className="RMName">
-                                    <strong>{props.data.data.moviePage.recom_mov[7].title} </strong>
-                                </div>
-                            </div>
-
-                            <div className="RMnameMovie" onClick={(m) => props.TRecm(props.data.data.moviePage.recom_mov[8].title)}>
-                                <div className="RMposter"  style={{backgroundImage:"url(" + props.data.data.moviePage.recom_mov[8].poster_path + ")"}}>
-
-                                </div>
-                                <div className="RMName">
-                                    <strong>{props.data.data.moviePage.recom_mov[8].title} </strong>
-                                </div>
-                            </div>
-
-                            <div className="RMnameMovie" onClick={(m) => props.TRecm(props.data.data.moviePage.recom_mov[9].title)} id="RMLast">
-                                <div className="RMposter"  style={{backgroundImage:"url(" + props.data.data.moviePage.recom_mov[9].poster_path + ")"}}>
-
-                                </div>
-                                <span className="RMName">
-                                    <strong>{props.data.data.moviePage.recom_mov[9].title} </strong>
-                                </span>
-                            </div>
-
-
-
-                        {/* </div> */}
                     </div>
 
 
@@ -124,6 +64,7 @@ const RecommendedMovies = (props) => {
         </div>
 
     );
+    }
 }
 
 export default RecommendedMovies;

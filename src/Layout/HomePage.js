@@ -53,6 +53,7 @@ componentDidMount(){
               <Topnav data={this.props.data} />
               <div>
                 <BgParticle/>
+                
                 <SearchBox data={this.props.data} ontype2={this.props.ontypeH} onEnter2={this.props.onEnter} />
                 <MovieInfoHome data={this.state} />
               </div>

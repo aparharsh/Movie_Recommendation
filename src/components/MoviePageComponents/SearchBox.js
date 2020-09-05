@@ -95,6 +95,8 @@ const SearchBox = (props) => {
                      
                      let x=document.getElementById(0)
                      x.style.fontSize='20px'
+
+                     props.ontype2(x.innerText);
                  }
  
                  else{
@@ -153,7 +155,7 @@ const SearchBox = (props) => {
 
     console.log('SearchBoxProps',props);
     return(
-        <div className="SearchBox" >
+        <div className="SearchBox" style={{zIndex:'650'}} >
             <label htmlFor="search"></label>
 
             <input className="Round" type="text" placeholder="search" onChange={suggest} onKeyDown={keyChng} /> 
