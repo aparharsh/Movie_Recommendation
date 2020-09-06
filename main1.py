@@ -174,21 +174,22 @@ def improved_recom(title,val,md_mod1,tot_movies,quant,ls):
     sim_scores = sim_scores[1:tot_movies+1]
     movie_indices = [i[0] for i in sim_scores]
     movies=md_mod1.iloc[movie_indices]
-    movies['cos']=list(sim_scores)
-    movies['cos']=movies['cos'].apply(lambda x: x[1].astype(float))
+    # movies.loc[:,'cos']=list(sim_scores)
+    # movies.loc[:,'cos']=movies.loc[:,'cos'].apply(lambda x: x[1].astype(float))
     
     vote_counts = movies[movies['vote_count'].notnull()]['vote_count'].astype('int')
     vote_averages = movies[movies['vote_average'].notnull()]['vote_average'].astype('int')
     C = vote_averages.mean()
     m = vote_counts.quantile(quant)
     qualified = movies[(movies['vote_count'] >= m) & (movies['vote_count'].notnull()) & (movies['vote_average'].notnull())]
-    qualified['vote_count'] = qualified['vote_count'].astype('int')
-    qualified['vote_average'] = qualified['vote_average'].astype('int')
-    qualified['wr'] = qualified.apply(lambda x:weighted_rating(x,m,C), axis=1)
-    qualified['wrcos']=qualified['wr']*qualified['cos']
+    qualified.loc[:,'vote_count'] = qualified.loc[:,'vote_count'].astype('int')
+    qualified.loc[:,'vote_average'] = qualified.loc[:,'vote_average'].astype('int')
+    qualified.loc[:,'wr'] = qualified.apply(lambda x:weighted_rating(x,m,C), axis=1)
+    # qualified.loc[:,'wrcos']=qualified.loc[:,'wr']*qualified.loc[:,'cos']
     
     # qualified=qualified.sort_values('wrcos',ascending=False).head(10)
     qualified = qualified.sort_values('wr', ascending=False).head(10)
+    qualified.loc[:,'vote_average'] = qualified.loc[:,'vote_average'].astype('str')
     return qualified
 
 # Filter for Language
@@ -209,26 +210,27 @@ def lang_recom(title,val,md_mod1,ls,p,tot_movies,quant):
     #sim_scores = sim_scores[1:31]
     movie_indices = [i[0] for i in sim_scores]
     md=md_mod1.iloc[movie_indices]
-    md['cos']=list(sim_scores)
-    md['cos']=md['cos'].apply(lambda x: x[1].astype(float))
+    # md['cos']=list(sim_scores)
+    # md['cos']=md['cos'].apply(lambda x: x[1].astype(float))
     md=md.loc[md.language==lang[0],:]
     md=md.iloc[1:41,:]
     
     if(p==1):
         
         movies=md.copy()
-        vote_counts = movies[movies['vote_count'].notnull()]['vote_count'].astype('int')
-        vote_averages = movies[movies['vote_average'].notnull()]['vote_average'].astype('int')
+        vote_counts = movies[movies['vote_count'].notnull()]['vote_count'].astype('int64')
+        vote_averages = movies[movies['vote_average'].notnull()]['vote_average'].astype('int64')
         C = vote_averages.mean()
         m = vote_counts.quantile(quant)
         qualified = movies[(movies['vote_count'] >= m) & (movies['vote_count'].notnull()) & (movies['vote_average'].notnull())]
-        qualified['vote_count'] = qualified['vote_count'].astype('int')
-        qualified['vote_average'] = qualified['vote_average'].astype('int')
-        qualified['wr'] = qualified.apply(lambda x:weighted_rating(x,m,C), axis=1)
-        qualified['wrcos']=qualified['wr']*qualified['cos']
+        qualified.loc[:,'vote_count'] = qualified.loc[:,'vote_count'].astype('int64')
+        qualified.loc[:,'vote_average'] = qualified.loc[:,'vote_average'].astype('int64')
+        qualified.loc[:,'wr'] = qualified.apply(lambda x:weighted_rating(x,m,C), axis=1)
+        # qualified['wrcos']=qualified['wr']*qualified['cos']
 
         # qualified=qualified.sort_values('wrcos',ascending=False).head(10)
-        qualified = qualified.sort_values('wr', ascending=False).head(10)  
+        qualified = qualified.sort_values('wr', ascending=False).head(10)
+        qualified.loc[:,'vote_average'] = qualified.loc[:,'vote_average'].astype('str')
         md=qualified.copy()
     
     return md
@@ -354,7 +356,7 @@ def recom():
         									'rating':rec['vote_average'][i]})
         to_be_sent['recom_mov'] = dic
         to_be_sent['comments'] = cmnt(df['imdb_id'][idx])
-        
+
         return jsonify(to_be_sent)
 
     else:
@@ -364,11 +366,11 @@ def recom():
 @app.route('/filter', methods = ['POST'])
 def filter():
     title = request.get_json()['title']
-    l = request.get_json()['cast']
-    m = request.get_json()['director']
-    n = request.get_json()['genre']
-    k = request.get_json()['language']
-    p = request.get_json()['popularity']
+    l = int(request.get_json()['cast'])
+    m = int(request.get_json()['director'])
+    n = int(request.get_json()['genre'])
+    k = int(request.get_json()['language'])
+    p = int(request.get_json()['popularity'])
     fil_mov = {}
     rec = recommend(title,l,m,n,k,p)
     dic=[]
@@ -381,4 +383,4 @@ def filter():
     return jsonify(fil_mov)
 
 if __name__ == '__main__':
-    app.run(debug = True)
+    app.run()
