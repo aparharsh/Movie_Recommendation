@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Carousel.css';
 import Slider from 'infinite-react-carousel';
-// import MovieState from '../States/MovieState';
+import { withRouter } from 'react-router-dom';
 
   
 
@@ -52,68 +52,68 @@ class CarouselEx extends Component {
                 </div> */}
                 
                 <div>
-                    <div className="NewC" style={{backgroundImage:"url(" + Object.values(this.props.data)[0] + ")"}} >
-                        {/* <div className="CMoiveNameInDiv">
-                            {Object.keys(this.props.data)[0]}
-                        </div> */}
+                    <div className="NewC" onClick={()=> {
+                        this.props.ORecm(this.props.data[0].title);
+                        this.props.history.push('/movie');}}
+                        style={{backgroundImage:"url(" + this.props.data[0].poster_path + ")"}} >
                         
                     </div>
                 </div>
 
                 <div>
-                    <div className="NewC" style={{backgroundImage:"url(" + Object.values(this.props.data)[1] + ")"}}>
-                        {/* <div className="CMoiveNameInDiv">
-                            {Object.keys(this.props.data)[1]}
-                        </div>   */}
+                    <div className="NewC" onClick={()=> {
+                        this.props.ORecm(this.props.data[1].title);
+                        this.props.history.push('/movie');}}
+                        style={{backgroundImage:"url(" + this.props.data[1].poster_path + ")"}}>
 
                     </div>
                 </div>
 
                 <div>
-                    <div className="NewC"  style={{backgroundImage:"url(" + Object.values(this.props.data)[2] + ")"}}>
-                        {/* <div className="CMoiveNameInDiv">
-                            {Object.keys(this.props.data)[2]}
-                        </div>     */}
+                    <div className="NewC" onClick={()=> {
+                        this.props.ORecm(this.props.data[2].title);
+                        this.props.history.push('/movie');}}
+                        style={{backgroundImage:"url(" + this.props.data[2].poster_path + ")"}}>
                     </div>
                 </div>
 
                 <div>
-                    <div className="NewC" style={{backgroundImage:"url(" + Object.values(this.props.data)[3] + ")"}}>
-                        {/* <div className="CMoiveNameInDiv">
-                            {Object.keys(this.props.data)[3]}
-                        </div> */}
+                    <div className="NewC" onClick={()=> {
+                        this.props.ORecm(this.props.data[3].title);
+                        this.props.history.push('/movie');}}
+                        style={{backgroundImage:"url(" + this.props.data[3].poster_path + ")"}}>
                     </div>
                 </div>
 
                 <div>
-                    <div className="NewC" style={{backgroundImage:"url(" + Object.values(this.props.data)[4] + ")"}}>
-                        {/* <div className="CMoiveNameInDiv">
-                            {Object.keys(this.props.data)[4]}
-                        </div> */}
+                    <div className="NewC" onClick={()=> {
+                        this.props.ORecm(this.props.data[4].title);
+                        this.props.history.push('/movie');}}
+                        style={{backgroundImage:"url(" + this.props.data[4].poster_path + ")"}}>
                     </div>
                 </div>
 
                 <div>
-                    <div className="NewC" style={{backgroundImage:"url(" + Object.values(this.props.data)[5] + ")"}}>
-                        {/* <div className="CMoiveNameInDiv">
-                            {Object.keys(this.props.data)[5]}
-                        </div> */}
+                    <div className="NewC" onClick={()=> {
+                        this.props.ORecm(this.props.data[5].title);
+                        this.props.history.push('/movie');}}
+                        style={{backgroundImage:"url(" + this.props.data[5].poster_path + ")"}}>
                     </div>
                 </div>
 
                 <div>
-                    <div className="NewC" style={{backgroundImage:"url(" + Object.values(this.props.data)[6] + ")"}}>
-                        {/* <div className="CMoiveNameInDiv">
-                            {Object.keys(this.props.data)[6]}
-                        </div> */}
+                    <div className="NewC" onClick={()=> {
+                        this.props.ORecm(this.props.data[6].title);
+                        this.props.history.push('/movie');}}
+                        style={{backgroundImage:"url(" + this.props.data[6].poster_path + ")"}}>
                     </div>
                 </div>
 
                 <div>
-                    <div className="NewC" style={{backgroundImage:"url(" + Object.values(this.props.data)[7] + ")"}}>
-                        {/* <div className="CMoiveNameInDiv">
-                            {Object.keys(this.props.data)[7]}
-                        </div>  */}
+                    <div className="NewC" onClick={()=> {
+                        this.props.ORecm(this.props.data[7].title);
+                        this.props.history.push('/movie');}}
+                        style={{backgroundImage:"url(" + this.props.data[7].poster_path + ")"}}>
                     </div>
                 </div> 
 
@@ -122,4 +122,4 @@ class CarouselEx extends Component {
         );
     }
 }
-export default CarouselEx;
+export default withRouter(CarouselEx);

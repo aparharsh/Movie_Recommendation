@@ -23,11 +23,13 @@ class HomePage extends Component{
 
 }
 
-componentDidMount(){
-  fetch('http://127.0.0.1:5000/home')
-     .then(response => response.json())
-     .then(data => this.setState({carouselData:data}));
-}
+// no need of fetching home page data
+
+// componentDidMount(){
+//   fetch('http://127.0.0.1:5000/home')
+//      .then(response => response.json())
+//      .then(data => this.setState({carouselData:data}));
+// }
 
 
 
@@ -35,13 +37,14 @@ componentDidMount(){
 
     render() {
 
-      let car;
       // console.log();
-      console.log(this.state.carouselData);
+      console.log(MovieState);
+      console.log(this.state.carouselData)
 
-      if ( this.state.carouselData !== 'null'){
-        car=<CarouselEx data={this.state.carouselData}/> }
-      else{car=''}
+      // if ( this.state.carouselData !== 'null'){
+      //   car=<CarouselEx data={MovieState}/> }
+      // else{car=''}
+
 
           return (
 
@@ -55,11 +58,13 @@ componentDidMount(){
                 <BgParticle/>
                 
                 <SearchBox data={this.props.data} ontype2={this.props.ontypeH} onEnter2={this.props.onEnter} />
-                <MovieInfoHome data={this.state} />
-              </div>
-              <div >
+                {/* <MovieInfoHome data={this.state} /> */}
                 
-                {car}
+              </div>
+              <div style={{bottom:'0', position:'absolute', width:'100%'}}>
+                <MovieInfoHome data={MovieState} />
+                
+                <CarouselEx data={MovieState} ORecm={this.props.ORecm}/>
               </div>
             </div>
           </div>

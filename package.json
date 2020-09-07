@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "axios": "^0.19.2",
     "infinite-react-carousel": "^1.2.11",
     "particles.js": "^2.0.0",
     "react": "^16.13.1",

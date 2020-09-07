@@ -32,7 +32,10 @@
     text-align: center;
     padding: 20px;
 }
-
+.emoji1{
+    box-shadow: 0 0 5px rgba(7, 76, 107);
+    border-radius: 10px;
+}
 
 
 

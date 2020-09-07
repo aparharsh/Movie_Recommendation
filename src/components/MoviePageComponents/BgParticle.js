@@ -9,8 +9,8 @@ class BgParticle extends Component{
     render() {
         return (
             
-            <div >
-                <Particles className="full"
+            <div style={{position:'relative'}}>
+                <Particles className="full" style={{height:'680px'}}
                  params={{
                     "particles": {
 

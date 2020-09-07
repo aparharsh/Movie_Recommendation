@@ -87,7 +87,7 @@ class Layout extends Component{
           {/* Page1 & 2 */}
 
         
-          <Route exact path="/" render={ () => <HomePage data={this.state} ontypeH={this.onChangeHandler} onEnter={this.onSearchHandler}/>  } />
+          <Route exact path="/" render={ () => <HomePage data={this.state} ontypeH={this.onChangeHandler} onEnter={this.onSearchHandler} ORecm={this.recClickHandler}/>  } />
           <Route exact path="/movie" render={ () => <MoviePageComponents data={this.state} chng={this.chng} filT={this.state.searchtypeq} OMod={this.modClickHandler} ORecm={this.recClickHandler} ontypeM={this.onChangeHandler} onEnter={this.onSearchHandler} /> } />
          
           {/* <MoviePageComponents data={this.state} onSearch={this.onChangeHandler} /> */}

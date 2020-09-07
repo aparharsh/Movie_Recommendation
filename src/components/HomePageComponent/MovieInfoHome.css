@@ -4,7 +4,7 @@
     width: 40em;
     background-color: rgba(46, 46, 46, 0.637);
     filter: brightness(.9);
-    position: absolute;
+    /* position: absolute; */
     top: 0;
     /* float: left; */
     margin-top: 210px;
