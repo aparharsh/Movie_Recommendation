@@ -7,14 +7,16 @@ const settings =  {
     centerMode: true,
     duration: 300,
     overScan: 1,
-    slidesToShow: 1
+    slidesToShow: 1,
+    centerPadding:10,
+    pauseOnHover:false
 };
 
 const MovieInfoHome = (props) => {
     return(
 
         
-        <div>
+        <div className="MIH-body">
             <Slider {...settings}>
                 <div>
 

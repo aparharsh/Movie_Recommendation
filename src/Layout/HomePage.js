@@ -61,7 +61,7 @@ class HomePage extends Component{
                 {/* <MovieInfoHome data={this.state} /> */}
                 
               </div>
-              <div style={{bottom:'0', position:'absolute', width:'100%'}}>
+              <div style={{top:'200px', position:'absolute', width:'100%'}}>
                 <MovieInfoHome data={MovieState} />
                 
                 <CarouselEx data={MovieState} ORecm={this.props.ORecm}/>

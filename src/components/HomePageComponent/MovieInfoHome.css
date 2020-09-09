@@ -1,5 +1,5 @@
 .MIHbox{
-    min-width: 400px;
+    /* min-width: 350px; */
     height: 400px;
     width: 40em;
     background-color: rgba(46, 46, 46, 0.637);
@@ -7,14 +7,14 @@
     /* position: absolute; */
     top: 0;
     /* float: left; */
-    margin-top: 210px;
+    /* margin-top: 210px; */
     margin-left: 8px;
     border-radius: 5px 50px 5px;
 }
 .MIHPosterbox{
     position: absolute;
     top: 0;
-    margin-top: 210px;
+    /* margin-top: 210px; */
     left: 50%;
     margin-left: 200px;
     height: 400px;
@@ -59,6 +59,7 @@
 @media only screen and (max-width: 750px) and (min-width: 630px) {
     .MIHbox{
       width: 20em;
+      
     }
     .MIHPosterbox{
         margin-left: 100px;
@@ -68,9 +69,11 @@
     }
    
 }
-@media only screen and (max-width: 630px) {
-    .MIHbox{
+@media only screen and (max-width: 630px) and (min-width: 400px) {
+    .MIHbox{ 
       width: 20em;
+      margin-left: 16px;
+      margin: auto;
     }
     .MIHPosterbox{
         display: none;
@@ -78,10 +81,36 @@
     }
    
 }
+@media only screen and (max-width: 400px) and (min-width: 250px) {
+    .MIHbox{
+        width: 15em;
+        margin-left: 16px;
+        margin: auto;
+      
+    }
+    .MIHPosterbox{
+        display: none;
+
+    }
+    
+   
+}
+@media only screen and (max-width: 250px) {
+    .MIH-body{
+        display: none;
+      
+    }
+    .MIHPosterbox{
+        display: none;
+
+    }
+    
+   
+}
 
 .MIHMovieTitle{
     color: white;
-    font-size: 3em;
+    font-size: 2em;
     text-transform: uppercase;
     /* background-color: rgb(102, 163, 132); */
     margin-top: 0;
@@ -112,6 +141,9 @@
     margin-top: 2%;
     /* background-color: springgreen; */
 }
+/* .MIH-body{
+    background-color: violet;
+} */
 
 .MIHTypeHeading{
     color: #FF6565;

@@ -25,7 +25,7 @@ class CarouselEx extends Component {
         
 
         return(
-            <div style={{marginTop:'15px', paddingBottom:'15px'}} className="CDivMargin">
+            <div style={{marginTop:'45px', paddingBottom:'15px',backgroundColor:'black'}} className="CDivMargin">
             <Slider {...settings}>
 
                 

@@ -1,9 +1,11 @@
 .NewC{
     display: inline-block;
-    height: 158px;
+    height: 458px;
     width: 300px;
     background-color: #5badce;
     background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: #fff;
     border-radius: 10px;
     margin-left: 10%;
@@ -27,7 +29,7 @@
 .CDivMargin{
   
     /* background-color: violet; */
-    margin-top: -80px;
+    margin-top: -8px;
 }
 
 @media only screen and (max-width: 800px) {
@@ -49,6 +51,7 @@
     .NewC{
      /* background-color: yellow; */
      width: 170px;
+     height: 250px;
     }
     .CDivMargin{
         margin-top: 0px;
@@ -62,6 +65,7 @@
     .NewC{
      /* background-color: rgb(124, 196, 109); */
      width: 200px;
+     height: 300px;
     }
     .CDivMargin{
         margin-top: 0px;
