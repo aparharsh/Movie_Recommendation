@@ -3,9 +3,9 @@ import './MovieCasts.css';
 const MovieCasts = (props) => {
   // console.log('MCProps',props.data.data.moviePage.cast[0].poster)
 
-const p = props.data.data.moviePage.cast.map((s)=>{
+const p = props.data.data.moviePage.cast.map((s, idx)=>{
   return(
-    <div className="MCrecDiv">
+    <div className="MCrecDiv" key={idx}>
       <img src={s.poster} alt={s.name} className="MCPP" onClick={(m) => props.clicked(s)}/>
       <div className="MCRealname">{s.name} </div><div className="MCcharactername">Character</div><div className="MCcharactername">{s.job} </div>
     </div>
