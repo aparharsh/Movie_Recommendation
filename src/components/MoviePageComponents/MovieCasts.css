@@ -1,0 +1,127 @@
+.MCCasts{
+    background-color: black;
+    color: rgb(243, 243, 243);
+    text-align: center;
+    font-size: 4rem;
+    z-index: 5;
+    padding-bottom: 16px;
+    
+}
+
+.MCblackBGCAast{
+    background-color: black;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    
+}
+
+.MCrecDiv{
+    width: 220px;
+    height: 220px;
+    display: inline-block;
+    /* background-color: chartreuse; */
+    margin-top: 10px;
+    margin: 1px;
+    cursor: pointer;
+    /* margin-left: 10px;
+    margin-right: 10px; */
+    
+    
+}
+
+.MCcharactername{
+    color: #CBCBCB;
+    font-size: 10px;
+}
+.MCRealname{
+    color: #ffffff;
+    font-size: 12px;
+}
+.MCPP{
+    width: 200px;
+    height: 200px;
+    /* background-color: cadetblue; */
+    border-radius: 50%;
+    margin-top: 25px;
+    display: inline-block;
+   
+}
+.MCcharactername{
+    color: #CBCBCB;
+}
+
+
+
+@media only screen and (min-width : 1300px) and 
+(max-width : 1600px) {
+    .MCrecDiv{
+        width: 175px;
+        height: 175px;
+        margin-left: 2px;
+        margin-right: 2px;
+    }
+    .MCRealname{
+        font-size: 15px;
+    }
+    .MCPP{
+        width: 175px;
+        height: 175px;
+        margin-top: 0px;
+        
+    }
+
+}
+
+
+@media only screen and (min-width : 1000px) and 
+(max-width : 1300px) {
+
+    .MCrecDiv{
+        width: 125px;
+        height: 125px;
+    }
+    .MCPP{
+        width: 125px;
+        height: 125px;
+        margin-top: 0px;
+    }
+
+}
+
+
+@media only screen and (min-width : 800px) and 
+(max-width : 1000px) {
+
+    .MCrecDiv{
+        width: 100px;
+        height: 100px;
+    }
+    .MCPP{
+        width: 100px;
+        height: 100px;
+        margin-top: 0px;
+    }
+
+}
+
+@media only screen and (min-width : 10px) and 
+(max-width : 800px) {
+
+    .MCrecDiv{
+        width: 65px;
+        height: 65px;
+    }
+    .MCPP{
+        width: 65px;
+        height: 65px;
+        margin-top: 0px;
+    }
+    .MCcharactername{
+        display: none;
+    }
+    .MCRealname{
+        display: none;
+    }
+
+}
+

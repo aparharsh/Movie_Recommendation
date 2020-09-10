@@ -1,0 +1,14 @@
+.Topnav {
+    text-align: center;
+    background-color: rgb(65, 65, 65);
+    color: aliceblue;
+    padding: 10px;
+    min-width: 450px;
+    opacity: 1;
+    z-index: 3;
+}
+.TopnavText{
+    opacity: 1;
+
+    font-size: 2em;
+}

@@ -1,0 +1,23 @@
+.Modal{
+    position: fixed;
+    max-height: 620px;
+    overflow: auto;
+    z-index: 600;
+    background-color: rgb(231, 231, 231);
+    width: 70%;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px black;
+    padding: 16px;
+    left: 15%;
+    top: 10%;
+    box-sizing: border-box;
+    animation: modalmove 0.5s 1;
+    animation-timing-function:ease-out ;
+    animation-delay:-0.2s ;
+    /* transition: all 0.3s ease-out; */
+}
+
+@keyframes modalmove {
+    from {top: 0%;}
+    to {top: 10%;}
+}

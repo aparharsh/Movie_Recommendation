@@ -1,0 +1,169 @@
+.MIHbox{
+    /* min-width: 350px; */
+    height: 400px;
+    width: 40em;
+    background-color: rgba(46, 46, 46, 0.637);
+    filter: brightness(.9);
+    /* position: absolute; */
+    top: 0;
+    /* float: left; */
+    /* margin-top: 210px; */
+    margin-left: 8px;
+    border-radius: 5px 50px 5px;
+}
+.MIHPosterbox{
+    position: absolute;
+    top: 0;
+    /* margin-top: 210px; */
+    left: 50%;
+    margin-left: 200px;
+    height: 400px;
+
+    width: 280px;
+    background-color: rgba(255, 255, 255, 0.062);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow: 1px 1px 10px 1px #f3f3f379;
+    border-radius: 10px;
+}
+
+@media only screen and (max-width: 1300px) and (min-width: 1000px) {
+    .MIHbox{
+        width: 40em;
+    }
+   
+}
+
+@media only screen and (max-width: 1000px) and (min-width: 800px) {
+    .MIHbox{
+        width: 30em;
+    }
+    .MIHPosterbox{
+        margin-left: 100px;
+   
+
+    }
+   
+}
+@media only screen and (max-width: 800px) and (min-width: 750px) {
+    .MIHbox{
+      width: 20em;
+    }
+    .MIHPosterbox{
+        margin-left: 70px;
+
+    }
+   
+}
+@media only screen and (max-width: 750px) and (min-width: 630px) {
+    .MIHbox{
+      width: 20em;
+      
+    }
+    .MIHPosterbox{
+        margin-left: 100px;
+        height: 300px;
+        width: 200px;
+
+    }
+   
+}
+@media only screen and (max-width: 630px) and (min-width: 400px) {
+    .MIHbox{ 
+      width: 20em;
+      margin-left: 16px;
+      margin: auto;
+    }
+    .MIHPosterbox{
+        display: none;
+
+    }
+   
+}
+@media only screen and (max-width: 400px) and (min-width: 250px) {
+    .MIHbox{
+        width: 15em;
+        margin-left: 16px;
+        margin: auto;
+      
+    }
+    .MIHPosterbox{
+        display: none;
+
+    }
+    
+   
+}
+@media only screen and (max-width: 250px) {
+    .MIH-body{
+        display: none;
+      
+    }
+    .MIHPosterbox{
+        display: none;
+
+    }
+    
+   
+}
+
+.MIHMovieTitle{
+    color: white;
+    font-size: 2em;
+    text-transform: uppercase;
+    /* background-color: rgb(102, 163, 132); */
+    margin-top: 0;
+    border-radius: 05px 50px 0px 0px;
+    
+}
+
+.MIHMovieType{
+    height: 70px;
+    /* background-color: springgreen; */
+    width: 25%;
+    display: inline-block;
+    margin-left: 4%;
+    border-right: 5px solid #c7c6c6;
+    border-radius: 2px;
+    margin-top: 0%;
+    padding-top: 0%;
+}
+
+.MIHMovieOverview{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* white-space: nowrap; */
+    max-height: 40%;
+    width: 90%;
+    display: inline-block;
+    margin-left: 4%;
+    margin-top: 2%;
+    /* background-color: springgreen; */
+}
+/* .MIH-body{
+    background-color: violet;
+} */
+
+.MIHTypeHeading{
+    color: #FF6565;
+}
+.MIHTypeBodyOverview{
+    /* --max-lines: 3; */
+    /* padding-right: 1rem; */
+    color: white;
+    /* background-color: rgb(0, 217, 255); */
+    overflow: hidden;
+    line-height: 1.2;
+    margin-left: 8px;
+    height: 130px;
+    text-overflow: ellipsis;
+    margin-top: 4px;
+}
+.MIHTypeBodyRating{
+    color: white;
+    /* background-color: rgb(0, 217, 255); */
+    margin-left: 8px;
+    text-overflow: ellipsis;
+    margin-top: 4px;
+}

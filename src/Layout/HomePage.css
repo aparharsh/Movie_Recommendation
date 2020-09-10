@@ -1,0 +1,10 @@
+.Body {
+    background-color: rgb(255, 255, 255);
+    max-width: 1600px;
+    min-width: 100px;
+    margin: 0 auto;
+}
+.CMargin{
+    background-color: yellow;
+    margin-top: 0;
+}

@@ -1,0 +1,179 @@
+.RMRecommendedMoviesBox{
+    height: 1300px;
+    background-color: rgb(0, 0, 0);
+    background-image: url('../../assets/Mask\ Group\ 9.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+
+  
+}
+.RMheading{
+    text-align: center;
+    font-size: 4rem;
+    font-weight: bold;
+    color: white;
+    padding-top: 16px;
+}
+
+.RMFilter{
+    color: white;
+    text-align: center;
+    /* background-color: teal; */
+    font-size: 20px;
+    align-items: center;
+    
+}
+.RMFilterBox{
+    background-color: rgb(94, 92, 92);
+    width: 35%;
+    margin-left: 40%;
+    margin-left: 40%;
+    /* height: 50px; */
+    border-radius: 8px;
+    padding: 1%;
+
+}
+.RMFSelect{
+    background-color: rgb(255, 255, 255);
+    padding: 5px;
+    border-radius: 4px;
+    border: none;
+    /* font-size: 20px; */
+}
+.RMFButton{
+    color: rgb(0, 0, 0);
+    background-color: rgb(75, 213, 218);
+    border: none;
+    margin-left: 8px;
+    padding: 2% 6%;
+    border-radius: 8px;
+    font-weight: bold;
+}
+/* .RMmovieBox1{
+    background-color: rgba(0, 0, 0, 0.664);
+    height: 450px;
+    margin-top: 0px;
+
+  
+}
+.RMmovieBox2{
+    background-color: rgba(0, 0, 0, 0.664);
+    height: 450px;
+    margin-top: 0px;
+
+} */
+.RMnameMovie{
+    background-color: rgb(255, 255, 255);
+    display: inline-block;
+    height: 400px;
+    width: 250px;
+    margin: 1%;
+    border-radius: 10px;
+    
+}
+.RMposter{
+    background-color: rgb(255, 255, 255);
+    /* background-image: url('https://i.pinimg.com/originals/4f/89/3c/4f893ce0705c9a0e32336da67e098051.jpg'); */
+    background-size: cover;
+    background-position: center;
+    height: 350px;
+    border-radius: 10px 10px 0px 0px;
+    box-shadow: 0px 2px 20px 1px #000000a1;
+    cursor: pointer;
+    
+}
+.RMcontainer
+{
+    text-align:center;
+    overflow: hidden;
+    
+}
+.RMName{
+    overflow: hidden;
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+
+
+
+
+
+
+@media only screen and (min-width : 1000px) and 
+(max-width : 1323px) {
+.RMmovieBox1{
+background-color: teal;
+height: 340px;
+
+}
+.RMnameMovie{
+    /* background-color: yellow; */
+    width: 180px;
+    height: 320px;
+}
+
+.RMposter{
+    height: 280px; 
+}
+
+}
+
+
+@media only screen and (min-width : 800px) and 
+(max-width : 1000px) {
+
+    .RMnameMovie{
+        /* background-color: rgb(136, 255, 0); */
+        width: 180px;
+        height: 320px;
+
+    }
+
+    .RMposter{
+        height: 280px; 
+    }
+
+
+}
+
+@media only screen and (min-width : 600px) and 
+(max-width : 800px) {
+
+    #RMLast{
+        display: none;
+    }
+    .RMnameMovie{
+        /* background-color: rgb(136, 255, 0); */
+        width: 180px;
+        height: 320px;
+
+    }
+
+    .RMposter{
+        height: 280px; 
+    }    
+}
+
+
+@media only screen and (min-width : 1px) and 
+(max-width : 600px){
+    #RMLast{
+        display: none;
+    }
+  
+       .RMnameMovie{
+           /* background-color: rgb(255, 94, 0); */
+           width: 150px;
+           height: 250px;
+
+       }
+    
+       .RMposter{
+            height: 200px; 
+       }
+       .RMmovieBox2{
+        display: none;
+    }
+
+}
