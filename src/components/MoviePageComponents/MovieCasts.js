@@ -6,7 +6,7 @@ const MovieCasts = (props) => {
 const p = props.data.data.moviePage.cast.map((s)=>{
   return(
     <div className="MCrecDiv">
-      <img src={s.poster} alt="alt" className="MCPP" onClick={(m) => props.clicked(s)}/>
+      <img src={s.poster} alt={s.name} className="MCPP" onClick={(m) => props.clicked(s)}/>
       <div className="MCRealname">{s.name} </div><div className="MCcharactername">Character</div><div className="MCcharactername">{s.job} </div>
     </div>
   )

@@ -38,8 +38,8 @@ class HomePage extends Component{
     render() {
 
       // console.log();
-      console.log(MovieState);
-      console.log(this.state.carouselData)
+      // console.log(MovieState);
+      // console.log(this.state.carouselData)
 
       // if ( this.state.carouselData !== 'null'){
       //   car=<CarouselEx data={MovieState}/> }

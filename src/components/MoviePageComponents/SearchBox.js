@@ -153,7 +153,7 @@ const SearchBox = (props) => {
          )
      }
 
-    console.log('SearchBoxProps',props);
+    // console.log('SearchBoxProps',props);
     return(
         <div className="SearchBox" style={{zIndex:'650'}} >
             <label htmlFor="search"></label>

@@ -6,7 +6,7 @@ class ActorInfo extends Component {
 
 
   render() {
-    console.log('ModalProps',this.props.data)
+    // console.log('ModalProps',this.props.data)
     return (
 
 

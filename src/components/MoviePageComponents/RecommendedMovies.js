@@ -17,7 +17,7 @@ class RecommendedMovies extends Component{
     }
 
     filSet = (me) => {
-        console.log(me)
+        // console.log(me)
         this.setState({filMov : me.fil_mov})
     }
 
