@@ -11,17 +11,17 @@ import pickle
 from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
 from bs4 import BeautifulSoup
+
+import config
 from tmdbv3api import TMDb
-import json
-import requests
+
 tmdb = TMDb()
-tmdb.api_key = '043f7f6c42393f6dceeca5e68e5e8850'
+tmdb.api_key = config.tmdb_api_key
 
 from tmdbv3api import Movie
 tmdb_movie = Movie()
 
 nltk.download('stopwords')
-import config
 
 stop = stopwords.words('english')
 
@@ -352,7 +352,7 @@ def home_data():
         				'rating' : df1['imdb_rating'][i],
         				'vote_count' : df1['imdb_votes'][i],
         				'overview':df['story'][i] })
-    print(home_dt)
+    
     return jsonify(home_dt)
 
 # suggestions while the user types the title.
@@ -378,9 +378,9 @@ def recom():
         to_be_sent['vote_count']=df['imdb_votes'][idx]
         to_be_sent['overview']=df['story'][idx]
         g=''
-        g=str(getposter(str(df.iloc[i,3])))
+        g=str(getposter(str(df.iloc[idx,3])))
         if(len(g)>10):
-            df.iloc[i,5]=g
+            df.iloc[idx,5]=g
         p_p = df['poster_path'][idx]
         to_be_sent['poster_path']= p_p if p_p.count('/')>3 else 'http://image.tmdb.org/t/p/original/' + p_p
         to_be_sent['cast']=cast_crew(df['imdb_id'][idx])
