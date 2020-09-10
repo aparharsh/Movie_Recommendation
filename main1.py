@@ -11,6 +11,15 @@ import pickle
 from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
 from bs4 import BeautifulSoup
+from tmdbv3api import TMDb
+import json
+import requests
+tmdb = TMDb()
+tmdb.api_key = '043f7f6c42393f6dceeca5e68e5e8850'
+
+from tmdbv3api import Movie
+tmdb_movie = Movie()
+
 nltk.download('stopwords')
 
 stop = stopwords.words('english')
@@ -135,6 +144,20 @@ for i in range(7):
     s='datasets/ls'+str(i)+'.npy'
     lis.append(np.load(s,allow_pickle=True))
 lis=np.concatenate((lis[0],lis[1],lis[2],lis[3],lis[4],lis[5],lis[6]))
+
+# Getting poster path from tmdb api
+def getposter(x):
+    result = tmdb_movie.search(x)
+    if(len(result)>0):
+        movie_id = result[0].id
+        response = requests.get('https://api.themoviedb.org/3/movie/{}?api_key={}'.format(movie_id,tmdb.api_key))
+        data_json = response.json()
+        if(str(data_json['poster_path'])):
+            return (data_json['poster_path'])
+        else:
+        	return (np.nan)
+    else:
+        return (np.nan)
 
 # Default Recommendations with preferance order
 
@@ -261,6 +284,11 @@ def recommend(title,l=0,m=0,n=0,k=0,p=0):
     else:
         md_recom=lang_recom(title,val,model,lis,p,tot_movies,quant).head(10)
     res=md_recom.loc[:,['original_title','poster_path','vote_average']]
+    for i in range(len(res)):
+        g=''
+        g=str(getposter(str(res.iloc[i,0])))
+        if(len(g)>10):
+            res.iloc[i,1]=g
     return res
     
 ## scraping comments and sentiment analysis
@@ -343,6 +371,10 @@ def recom():
         to_be_sent['rating']=df['imdb_rating'][idx]
         to_be_sent['vote_count']=df['imdb_votes'][idx]
         to_be_sent['overview']=df['story'][idx]
+        g=''
+        g=str(getposter(str(df.iloc[i,3])))
+        if(len(g)>10):
+            df.iloc[i,5]=g
         p_p = df['poster_path'][idx]
         to_be_sent['poster_path']= p_p if p_p.count('/')>3 else 'http://image.tmdb.org/t/p/original/' + p_p
         to_be_sent['cast']=cast_crew(df['imdb_id'][idx])
