@@ -79,7 +79,18 @@ class Layout extends Component{
         
       // console.log('searchtypeq',this.state.searchtypeq);
         console.log('stateafterFetch',this.state.moviePage);
-        console.log('searchTypeEq', this.state.searchtypeq)
+        console.log('searchTypeEq', this.state.searchtypeq);
+
+        console.log('      _            _____ ');
+        console.log(`    // \\\\      //||     `);
+        console.log('   //   \\\\    // ||_____ ');
+        console.log('  //_____\\\\  //         ||');
+        console.log(' //       \\\\//     _____||');
+        console.log('For any Queries, Contact Us:');
+        console.log('haarshchandra5@gmail.com');
+        console.log('sk2968105@gmail.com');
+        console.log('ag.vidit1@gmail.com')
+
         return (
 
           <Router>
