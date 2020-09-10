@@ -13,7 +13,7 @@ const settings =  {
 
 const UserReview = (props) => {
     // console.log('URProps',props.data.data.moviePage.comments)
-    const p = props.data.data.moviePage.comments.map((s, idx) => {
+    const p = props.data.data.moviePage.comments.map((s) => {
     
         let emo;
         
@@ -35,7 +35,7 @@ const UserReview = (props) => {
         };
         
         return(
-            <div key={idx}>
+            <div>
                     <div className="URreviewBox">
                         <div className="URTexts">
                          {s.comment}
@@ -54,6 +54,67 @@ const UserReview = (props) => {
         <Slider {...settings}>
             
             {p}
+
+            {/* <div>
+                <div className="URreviewBox">
+                    <div className="URTexts">
+                     {props.data.data.moviePage.comments[0].comment}
+                    </div>
+                    <div className="URRatings">
+                        Rating
+                    </div>
+                </div>
+            </div> */}
+            {/* <div>
+                <div className="URreviewBox">
+                    <div className="URTexts">
+                        {props.data.data.moviePage.comments[1].comment}
+                    </div>
+                    <div className="URRatings">
+                        Rating
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div className="URreviewBox">
+                    <div className="URTexts">
+                        {props.data.data.moviePage.comments[2].comment}    
+                    </div>
+                    <div className="URRatings">
+                        Rating
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div className="URreviewBox">
+                    <div className="URTexts">
+                        {props.data.data.moviePage.comments[3].comment}
+                    </div>
+                    <div className="URRatings">
+                        Rating
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div className="URreviewBox">
+                    <div className="URTexts">
+                        {props.data.data.moviePage.comments[4].comment}
+                        </div>
+                        <div className="URRatings">
+                            Rating
+                        </div>
+                </div>
+            </div>
+            <div>
+                <div className="URreviewBox">
+                    <div className="URTexts">
+                    {props.data.data.moviePage.comments[4].comment}
+                    </div>
+                    <div className="URRatings">
+                        Rating
+                    </div>
+                </div>
+            </div> */}
             
         </Slider>
         </div>
