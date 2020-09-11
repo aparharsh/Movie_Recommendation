@@ -33,7 +33,12 @@ df = pd.read_csv('datasets/main_dataset.csv')
 # must be hide before deployment, using config.py
 api_key = config.api_key
 
-app = Flask(__name__)
+# app = Flask(__name__)
+
+# for deploying 
+
+app = Flask(__name__, static_folder='./build', static_url_path='/')
+
 CORS(app)
 
 # cast and crew bio, birthdays, images data scraped.
@@ -420,5 +425,10 @@ def filter():
     fil_mov['fil_mov'] = dic
     return jsonify(fil_mov)
 
+# for deploying
+@app.route('/')
+def index():
+    return app.send_static_file('index.html')
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', debug=False, port=os.environ.get('PORT', 80))
