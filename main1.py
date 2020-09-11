@@ -37,9 +37,14 @@ api_key = config.api_key
 
 # for deploying 
 
-app = Flask(__name__, static_folder='./build', static_url_path='/')
+app = Flask(__name__, static_folder='build', static_url_path='')
 
 CORS(app)
+
+# api for deploying
+@app.route('/', methods=["GET"])
+def index():
+    return app.send_static_file('index.html')
 
 # cast and crew bio, birthdays, images data scraped.
 # df is the main dataframe.
@@ -425,10 +430,6 @@ def filter():
     fil_mov['fil_mov'] = dic
     return jsonify(fil_mov)
 
-# for deploying
-@app.route('/')
-def index():
-    return app.send_static_file('index.html')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=False, port=os.environ.get('PORT', 80))
