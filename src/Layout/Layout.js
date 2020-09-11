@@ -53,7 +53,7 @@ class Layout extends Component{
         moviePage:''
       });
         // this.setState({moviePage:'Chnaged state of movie page'})
-        fetch('http://127.0.0.1:5000/recom',{
+        fetch('http://0.0.0.0:80/recom',{
             method:'POST',
             headers:{'Content-type':'application/json'},
             body:JSON.stringify({title:this.state.searchtypeq})

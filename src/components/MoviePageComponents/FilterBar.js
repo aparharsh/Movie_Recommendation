@@ -18,7 +18,7 @@ class FilterBar extends Component{
 
     submit = () =>{
         
-        fetch('http://127.0.0.1:5000/filter',{
+        fetch('http://0.0.0.0:80/filter',{
             method:'POST',
             headers:{'Content-type':'application/json'},
             body:JSON.stringify({

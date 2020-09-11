@@ -11,6 +11,10 @@
     margin-left: 8px;
     border-radius: 5px 50px 5px;
 }
+.MIH-body{
+    max-width: 1600px;
+  
+}
 .MIHPosterbox{
     position: absolute;
     top: 0;
