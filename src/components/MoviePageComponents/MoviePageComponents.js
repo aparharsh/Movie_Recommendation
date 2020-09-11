@@ -30,7 +30,7 @@ class MoviePageComponents extends Component{
         if( sessionStorage.moviePage !== ''){
           if(this.props.data.moviePage === ''){
             console.log('ssTitle', sessionStorage.moviePage)
-            fetch('http://0.0.0.0:80/recom',{
+            fetch('http://127.0.0.1:5000/recom',{
               method:'POST',
               headers:{'Content-type':'application/json'},
               body:JSON.stringify({title : sessionStorage.moviePage})
