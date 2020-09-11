@@ -1,0 +1,4 @@
+wordnet
+stopwords
+PorterStemmer
+RegexpTokenizer
