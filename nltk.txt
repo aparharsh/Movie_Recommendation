@@ -1,4 +1,2 @@
 wordnet
 stopwords
-PorterStemmer
-RegexpTokenizer
