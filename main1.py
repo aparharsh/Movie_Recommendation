@@ -9,7 +9,7 @@ from sklearn.metrics.pairwise import linear_kernel
 import nltk
 import pickle
 from nltk.corpus import stopwords
-from nltk.stem import PorterStemmer
+# from nltk.stem import PorterStemmer
 from bs4 import BeautifulSoup
 
 import config
