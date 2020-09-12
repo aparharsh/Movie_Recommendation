@@ -6,9 +6,9 @@ import requests
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import linear_kernel
-import nltk
+# import nltk
 import pickle
-from nltk.corpus import stopwords
+# from nltk.corpus import stopwords
 # from nltk.stem import PorterStemmer
 from bs4 import BeautifulSoup
 
@@ -24,7 +24,7 @@ tmdb_movie = Movie()
 # nltk.download('stopwords')
 # nltk.download('PorterStemmer')
 # nltk.download('RegexpTokenizer')
-stop = stopwords.words('english')
+# stop = stopwords.words('english')
 
 model = pickle.load(open('datasets/model.sav', 'rb'))
 sent = {0:'negative', 1:'somewhat negative', 2:'neutral', 3:'somewhat positive', 4:'positive'}
