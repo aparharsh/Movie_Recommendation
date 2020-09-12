@@ -372,7 +372,6 @@ def home_data():
 @app.route('/suggestions', methods = ['POST'])
 def suggestions():
 	s = request.get_json()['title'].lower()
-    print('Vidit Suggestion Called')
 	return jsonify(df[df['search_title'].str.contains(s)].sort_values(by='imdb_votes', ascending = False).head()['original_title'].values.tolist())
 
 # when the user searches a movie title.
