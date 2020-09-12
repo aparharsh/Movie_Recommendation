@@ -22,7 +22,8 @@ from tmdbv3api import Movie
 tmdb_movie = Movie()
 
 nltk.download('stopwords')
-
+nltk.download('PorterStemmer')
+nltk.download('RegexpTokenizer')
 stop = stopwords.words('english')
 
 model = pickle.load(open('datasets/model.sav', 'rb'))
