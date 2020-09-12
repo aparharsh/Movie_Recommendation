@@ -21,9 +21,9 @@ tmdb.api_key = config.tmdb_api_key
 from tmdbv3api import Movie
 tmdb_movie = Movie()
 
-nltk.download('stopwords')
-nltk.download('PorterStemmer')
-nltk.download('RegexpTokenizer')
+# nltk.download('stopwords')
+# nltk.download('PorterStemmer')
+# nltk.download('RegexpTokenizer')
 stop = stopwords.words('english')
 
 model = pickle.load(open('datasets/model.sav', 'rb'))
@@ -310,7 +310,7 @@ def recommend(title,l=0,m=0,n=0,k=0,p=0):
 ## scraping comments and sentiment analysis
 def cmnt(id):
     
-    tokenizer = nltk.RegexpTokenizer(r"\w+")
+    # tokenizer = nltk.RegexpTokenizer(r"\w+")
     
     page=requests.get('https://www.imdb.com/title/' + id + '/reviews?ref_=tt_urv')
     soup = BeautifulSoup(page.content, 'html.parser')
@@ -322,18 +322,18 @@ def cmnt(id):
             
         s = i.get_text()
         cmnts.append(s)
-        s = tokenizer.tokenize(s)
-        s = [PorterStemmer().stem(i) for i in s]
-        s = [item for item in s if item not in stop]
-        s = ' '.join(s)
+        # s = tokenizer.tokenize(s)
+        # s = [PorterStemmer().stem(i) for i in s]
+        # s = [item for item in s if item not in stop]
+        # s = ' '.join(s)
         
-        ls.append(s)
+        # ls.append(s)
         
-    result = model.predict(ls)
-    respo=[sent[x] for x in result]
-
+    # result = model.predict(ls)
+    # respo=[sent[x] for x in result]
+	
     for i in range(len(cmnts)):
-        dic.append({'comment':cmnts[i],'emoji':respo[i]})
+        dic.append({'comment':cmnts[i],'emoji':'neutral'})
     return dic
 
 ########################################################################33
