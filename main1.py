@@ -6,9 +6,10 @@ import requests
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import linear_kernel
-# import nltk
-# import pickle
-# from nltk.corpus import stopwords
+import nltk
+import pickle
+from nltk.corpus import stopwords
+
 # from nltk.stem import PorterStemmer
 from bs4 import BeautifulSoup
 
@@ -22,11 +23,12 @@ from tmdbv3api import Movie
 tmdb_movie = Movie()
 
 # nltk.download('stopwords')
+# nltk.download('stem')
 # nltk.download('PorterStemmer')
 # nltk.download('RegexpTokenizer')
-# stop = stopwords.words('english')
+stop = stopwords.words('english')
 
-# model = pickle.load(open('datasets/model.sav', 'rb'))
+model = pickle.load(open('datasets/model.sav', 'rb'))
 sent = {0:'negative', 1:'somewhat negative', 2:'neutral', 3:'somewhat positive', 4:'positive'}
 
 df = pd.read_csv('datasets/main_dataset.csv')
@@ -312,30 +314,34 @@ def recommend(title,l=0,m=0,n=0,k=0,p=0):
 ## scraping comments and sentiment analysis
 def cmnt(id):
     
-    # tokenizer = nltk.RegexpTokenizer(r"\w+")
+    tokenizer = nltk.RegexpTokenizer(r"\w+")
     
     page=requests.get('https://www.imdb.com/title/' + id + '/reviews?ref_=tt_urv')
     soup = BeautifulSoup(page.content, 'html.parser')
     cmnts=[]
     dic=[]
     ls=[]
+
+    lemma = nltk.wordnet.WordNetLemmatizer()
+
     for idx, i in enumerate(soup.find_all('div', attrs={'class':"text show-more__control"})):
         if idx > 4:break
             
         s = i.get_text()
         cmnts.append(s)
-        # s = tokenizer.tokenize(s)
+        s = tokenizer.tokenize(s)
+        s = [lemma.lemmatize(i) for i in s]
         # s = [PorterStemmer().stem(i) for i in s]
-        # s = [item for item in s if item not in stop]
-        # s = ' '.join(s)
+        s = [item for item in s if item not in stop]
+        s = ' '.join(s)
         
-        # ls.append(s)
+        ls.append(s)
         
-    # result = model.predict(ls)
-    # respo=[sent[x] for x in result]
+    result = model.predict(ls)
+    respo=[sent[x] for x in result]
 	
     for i in range(len(cmnts)):
-        dic.append({'comment':cmnts[i],'emoji':'neutral'})
+        dic.append({'comment':cmnts[i],'emoji':respo[i]})
     return dic
 
 ########################################################################33
