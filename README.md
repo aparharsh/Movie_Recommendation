@@ -28,7 +28,7 @@ Till know backend API was created and we started to make our site dynamic. Wrote
 3. Added cast biography that can be seen by clicking on actor/actress profile pic.
 4. Added details of some best imdb movies on home page.
 
-#Backend
+# Backend
 
 Now coming to the Backend part of the project.
 Flask was used to connect the front end to our model which is written in python.
@@ -62,11 +62,11 @@ Last but not the least the poster URL stored in our database wasn't working. So 
 ## User Reviews & Sentiment Analysis:
 
 Now for each movie we scraped the top 5 comments from IMDb and displayed the comments on our comments section. Following that we did sentiment analysis (NLP) on our comments to classify a particular comment into 5 different categories.
-🔥: Positive
-🤩: Somewhat positive
-😄: Neutral
-🙁: Somewhat negative
-😔: Negative
+  🔥: Positive
+  🤩: Somewhat positive
+  😄: Neutral
+  🙁: Somewhat negative
+  😔: Negative
 
 For Preprocessing this data, we took each comment and removed the stopwords & lemmatized each word of the comment and run the saved model to get the results. We used Pickle, a python package for saving and loading our model.
 
@@ -74,7 +74,7 @@ For Preprocessing this data, we took each comment and removed the stopwords & le
 
 For creation of the model we used dataset from Kaggle which contained Rotten Tomato (website) reviews and sentiments categorised from 1-5. Initially, basic Pre-Processing was done and both stemmed and lemmatized version for the comments were generated. After that it was split in train and test data and Multinomial Naive Bayes model was run to see how it performed. We saw that lemmatized reviews performed better than stemmed reviews and hence, lemmatizer was used in the final model. The training model accuracy was around 67% and testing accuracy was around 63% for our model. It was saved and later used in our app.
 
-###Notes:
+### Notes:
 
 1) After getting the dataset we later found that there are few movie names which were occurring multiple times in our dataset, we removed duplicate names but later found that only first movie was retained and it was often seen that specially in bollywood, a movie with same name was released in earlier years. Hence later we for the movies with name occuring multiple times we added the year of release to the movie name and now dropped the duplicate names retaining the last. This was happening because we still had few movies in bollywood which also occured in our Hollywood dataset with language saved as English in later one.
 
