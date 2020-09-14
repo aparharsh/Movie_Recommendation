@@ -80,7 +80,7 @@ After <b>multiplying </b>the particular movie score with other movies scores we 
 One thing that we notice about our recommendation system is that it recommends movies <b>without considering</b> its base <b>language</b>. A person who wants to see recommendation for a <b>bollywood movie</b> might prefer getting <b>hindi movies</b> only as recommendation. Hence, before sorting we <b>remove the other languages</b> and sort the remaining movies based on similarity score returning <b>top 10</b>.
 
 #### Popularity and Ratings
-Another thing that we notice is that it recommends movies regardless of <b>ratings and popularity</b>. Therefore, we add a filter to remove bad movies and return movies which are popular and have had a <b>good critical response</b>. We take the <b>top 40 movies</b> based on similarity scores and calculate the vote of the <b>75th percentile movie</b>. Then, using this as the value of <b>m (min votes required)</b>, we will calculate the <b>weighted rating</b> of each movie using <b>IMDB's formula.</b>
+Another thing that we notice is that it recommends movies regardless of <b>ratings and popularity</b>. Therefore, we add a filter to remove bad movies and return movies which are popular and have had a <b>good critical response</b>. We take the <b>top 40 movies</b> based on similarity scores and calculate the vote of the <b>75th percentile movie</b>. Then, using this as the value of <b>m (min votes required)</b>, we will calculate the <b>weighted rating</b> of each movie using <b>IMDB's formula.</b><br>
 Mathematically, it is represented as follows:
 
                 Weighted Rating (WR) =  (v/(v+m).R)+(m/(v+m).C)
@@ -111,7 +111,7 @@ Now for each movie we <b>scrape the Top 5 comments</b> from <b>IMDb</b> and disp
 <br> 😔: Negative
 
 For <b>Preprocessing</b> this data, we take each comment and remove the <b>stopwords & lemmatized</b> each word of the comment. We run the saved model to get the results. We use <b>Pickle</b>, a python package for <b>saving and loading our model</b>.
-These are all from <b>nltk library package</b> in python.
+These are all from <b>nltk library package</b> in python.<br>
 _For details regarding stopwords and lemmitization please refer to preprocessing in overview above ^_
 
 #### Model:
@@ -119,7 +119,7 @@ _For details regarding stopwords and lemmitization please refer to preprocessing
 For creation of the model we use <b>dataset from Kaggle</b> which contains <b>Rotten Tomato (website) reviews</b> and sentiments are categorised from 1-5. Initially, basic Pre-Processing is done (use of <b>tokenizer</b>) and both <b>stemmed and lemmatized version</b> for the comments are generated. After that it is split in <b>train and test data</b>. <b>Multinomial Naive Bayes model</b> is run to see how it performs. 
 
 We see that lemmatized reviews performed better than stemmed reviews and hence, <b>lemmatizer</b> is used in the <b>final model</b>. The <b>training model accuracy</b> was around <b>67%</b> and <b>testing accuracy</b> was around <b>63%</b> for our model. <b>Neural Network</b> can be used to <b>improve the accuracy</b> to more than 75~80%.
-
+<br>
 _Here also count vectorizer is used in creating the model followed by training on TF-IDF vectors with Mult. Naive Bayes_
 
 ### Notes:
@@ -135,10 +135,5 @@ Hence later we added the <b>year of release</b> to <b>duplicate titles</b>. Now 
 
 Our app is deployed for free on <b>Heroku Web Services</b>. We faced some difficulties while deploying the app. There were some versions not compatible in <b>requirement.txt</b> file and also some problems arose while writing <b>nltk.txt</b> file.
 Despite few limitations faced due to free deployment services, our app could be accesed using:
-<b>https://blackbox-asv.herokuapp.com/</b>
+<br><b>https://blackbox-asv.herokuapp.com/</b>
 
-### Extra
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
-
-Below you will find some information on how to perform common tasks.<br>
-You can find the most recent version of this guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
