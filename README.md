@@ -111,6 +111,7 @@ Now for each movie we <b>scrape the Top 5 comments</b> from <b>IMDb</b> and disp
 <br> 😔: Negative
 
 For <b>Preprocessing</b> this data, we take each comment and remove the <b>stopwords & lemmatized</b> each word of the comment. We run the saved model to get the results. We use <b>Pickle</b>, a python package for <b>saving and loading our model</b>.
+These are all from <b>nltk library package</b> in python.
 _For details regarding stopwords and lemmitization please refer to preprocessing in overview above ^_
 
 #### Model:
@@ -129,6 +130,12 @@ Hence later we added the <b>year of release</b> to <b>duplicate titles</b>. Now 
 2) The slightly <b> long time taken</b> to load our page is because of <b>extensive scrapping</b> we did for each movie for our comments, information on cast and also to get poster path for each recommendation. If <b>api</b> is accessed or the data is <b>somehow stored</b> the loading speed of each movie can be improved.
 
 3) Our recommendations are not <b>perfectly accurate</b> because we only used <b>basic content filtering</b> and also <b>mainly 3 categories</b> for it. If tagline, description and others are used it can lead to much <b>better recommendations</b>. Also currently <b>collaborative filtering, hybrid filtering, etc</b> is being used in other big sites. We <b>tried that as well</b>, but due to <b>initial difficulty</b> in <b>setting and saving</b> each user database we kept that aside for <b>future improvements</b> on our project.
+
+# Deployment
+
+Our app is deployed for free on <b>Heroku Web Services</b>. We faced some difficulties while deploying the app. There were some versions not compatible in <b>requirement.txt</b> file and also some problems arose while writing <b>nltk.txt</b> file.
+Despite few limitations faced due to free deployment services, our app could be accesed using:
+<b>https://blackbox-asv.herokuapp.com/</b>
 
 ### Extra
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
